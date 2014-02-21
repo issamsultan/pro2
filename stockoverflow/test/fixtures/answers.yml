@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  user_id: 1
+  vote: 1
+  photo_id: 1
+  flag: 1
+
+two:
+  content: MyText
+  user_id: 1
+  vote: 1
+  photo_id: 1
+  flag: 1
