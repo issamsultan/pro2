@@ -1,4 +1,7 @@
 Stockoverflow::Application.routes.draw do
+  resources :photo_tags
+
+
   resources :answers
 
 
