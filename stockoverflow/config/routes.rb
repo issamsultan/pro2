@@ -1,18 +1,29 @@
 Stockoverflow::Application.routes.draw do
-  resources :photo_tags
+  
 
+  
+
+  
+
+  
+
+  
+
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :users
+
+  resources :photo_tags
 
   resources :answers
 
-
   resources :tags
-
 
   resources :albums
 
-
   resources :photos
 
+  root :to => "photos#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
