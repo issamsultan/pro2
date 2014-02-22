@@ -11,3 +11,57 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  font-family: helvetica, sans-serif;
+}
+
+.photo_container {
+  width: 30%;
+  color: white;
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  overflow: hidden;
+  height: 30vh;
+  border-radius: 3px;
+}
+
+.photo_image img {
+  width: 100%;
+  position:absolute;
+  left:0px;
+  top:0px;
+  z-index:-1;
+}
+
+.photo_title {
+}
+
+.question {
+  background-color: rgba(255, 255, 255, .5);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  padding-top: 0;
+  color: black;
+}
+
+a, a:active, a:hover, a:visited a:link {
+  text-decoration: none;
+  color: black;
+}
+
+#loading {
+  display: none;
+}
+
+.none {
+  display: none;
+}
+
+
+
+

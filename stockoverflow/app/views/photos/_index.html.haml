@@ -1,0 +1,9 @@
+- @photos.each do |photo|
+  .photo_container
+    .photo_image
+      = image_tag photo.image
+    %h2.photo_title
+      = link_to photo.title, photo
+    .question
+      %p  
+      = photo.question
