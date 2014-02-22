@@ -25,6 +25,13 @@ Stockoverflow::Application.routes.draw do
     member do
       post :vote_up
     end
+    member do
+      post :vote_down
+    end
+    member do
+      post :remove_vote
+    end
+
   end
 
   resources :votes
