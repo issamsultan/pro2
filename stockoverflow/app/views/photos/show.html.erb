@@ -22,10 +22,9 @@
 
 <p>
   <b>Votes: <%= @photo.plusminus %><span id="notice"> - <%= notice %></span></br>
-  <%= link_to('Vote for this photo', vote_up_photo_path(@photo), :method => :post) %><br>
-  <%= link_to('Down vote this photo', vote_down_photo_path(@photo), :method => :post) %><br>
-  <%= link_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %><br>
-
+  <%= button_to('Vote for this photo', vote_up_photo_path(@photo), :method => :post) %><br>
+  <%= button_to('Down vote this photo', vote_down_photo_path(@photo), :method => :post) %><br>
+  <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %><br>
 </p>
 
 <p>
