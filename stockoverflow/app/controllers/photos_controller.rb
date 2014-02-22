@@ -69,6 +69,17 @@ class PhotosController < ApplicationController
     end
   end
 
+  def vote_up
+    @photo = Photo.find(params[:id])
+    begin
+      current_user.vote_for(@photo)
+      redirect_to @photo, notice: 'you liked the photo' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy

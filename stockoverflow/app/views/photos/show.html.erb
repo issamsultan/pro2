@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <b>Votes: <%= @photo.plusminus %></b>
+  <%= link_to('vote for this photo', vote_up_photo_path(@photo), :method => :post) %><br>
+</p>
+
+<p>
   <b>Flag:</b>
   <%= @photo.flag %>
 </p>

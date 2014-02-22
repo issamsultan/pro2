@@ -21,7 +21,13 @@ Stockoverflow::Application.routes.draw do
 
   resources :albums
 
-  resources :photos
+  resources :photos do
+    member do
+      post :vote_up
+    end
+  end
+
+  resources :votes
 
   root :to => "photos#index"
 

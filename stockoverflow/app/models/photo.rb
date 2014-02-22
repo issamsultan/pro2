@@ -5,4 +5,9 @@ class Photo < ActiveRecord::Base
   has_many :answers
   has_many :photo_tags
   has_many :tags, through: :photo_tags
+  
+
+  #makes the photo model voteable
+  acts_as_voteable
+
 end
