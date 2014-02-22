@@ -9,6 +9,8 @@ gem 'pg'
 gem 'haml-rails'
 gem 'rails_admin'
 gem 'thumbs_up'
+gem 'rmagick'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'pry-rails'
