@@ -3,10 +3,22 @@
 <head>
   <title>Stockoverflow</title>
   <%= javascript_include_tag "jquery-1.11.0" %>
-  <%= javascript_include_tag "jscroll" %>
+  <%= javascript_include_tag "masonry.pkgd" %>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
+  <script>
+  $(function(){
+ 
+    var container = document.querySelector('#container');
+    var msnry = new Masonry( container, {
+      // options
+      columnWidth: 200,
+      itemSelector: '.item'
+    });
+   
+  });
+</script>
 </head>
 <body>
 
