@@ -15,6 +15,5 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $('#pagination').addClass('none');
-  $('#scroll').jscroll();
+  $('#pagination').jscroll();
 });
