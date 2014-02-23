@@ -1,14 +1,7 @@
-- content_for :scripts do 
-  = javascript_include_tag 'endless_page'
-
 %h1 Photos
 
-= render 'index' 
-
-= link_to 'New Photo', new_photo_path
+#scroll
+  = render 'index' 
 
 #pagination
   = will_paginate @photos
-
-%p#loading
-  Loading...
