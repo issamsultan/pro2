@@ -46,7 +46,7 @@
             currPage: 1
         },
         debug: false,
-    behavior: undefined,
+        behavior: undefined,
         binder: $(window), // used to cache the selector
         nextSelector: "div.navigation a:first",
         navSelector: "div.navigation",
@@ -62,7 +62,7 @@
         infid: 0, //Instance ID
         pixelsFromNavToBottom: undefined,
         path: undefined, // Either parts of a URL as an array (e.g. ["/page/", "/"] or a function that takes in the page number and returns a URL
-    prefill: false, // When the document is smaller than the window, load data until the document is larger or links are exhausted
+        prefill: false, // When the document is smaller than the window, load data until the document is larger or links are exhausted
         maxPage: undefined // to manually control maximum page (when maxPage is undefined, maximum page limitation is not work)
   };
 

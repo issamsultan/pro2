@@ -44,6 +44,8 @@ $(document).ready(function() {
       },
       function(newElements) {
         $container.isotope('appended', $(newElements));
+        
+        // $container.isotope( 'reLayout', callback );
         // $container.imagesLoaded();
       }
     );
