@@ -1,9 +1,11 @@
 - @photos.each do |photo|
   .item
-    .photo_image
-      = image_tag photo.image
-    %h2.photo_title
-      = link_to photo.title, photo
+    .blurtop
+      = image_tag photo.image 
+    .photo_title
+      %h2
+        = link_to photo.title, photo
+    = image_tag photo.image      
     .question
       %p  
-        = photo.question
+        = truncate photo.question, length: 150

@@ -6,6 +6,8 @@
   <%= javascript_include_tag "masonry.pkgd" %>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Magra' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Inder' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
   <script>
   $(function(){
@@ -13,7 +15,7 @@
     var container = document.querySelector('#container');
     var msnry = new Masonry( container, {
       // options
-      columnWidth: 200,
+      // columnWidth: 200,
       itemSelector: '.item'
     });
    
