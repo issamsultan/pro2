@@ -1,21 +1,23 @@
 Stockoverflow::Application.routes.draw do
-  
 
   
-
-  
-
-  
-
-  
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
 
   resources :photo_tags
 
-  resources :answers
+  resources :answers do
+    member do
+      post :vote_up
+    end
+    member do
+      post :vote_down
+    end
+    member do 
+      post :remove_vote
+    end
+  end
 
   resources :tags
 

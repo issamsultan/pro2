@@ -70,6 +70,40 @@ class AnswersController < ApplicationController
     end
   end
 
+  def vote_up
+    @answer = Answer.find(params[:id])
+    begin
+      current_user.vote_for(@answer)
+      redirect_to @photo, notice: 'you liked the answer' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+  def vote_down
+    @answer = Answer.find(params[:id])
+    begin
+      current_user.vote_against(@answer)
+      redirect_to @photo, notice: 'you disliked the answer' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+  def remove_vote
+    @answer = Answer.find(params[:id])
+    begin
+      current_user.unvote_for(@answer)
+      redirect_to @answer, notice: 'you removed your vote' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+
   # DELETE /answers/1
   # DELETE /answers/1.json
   def destroy

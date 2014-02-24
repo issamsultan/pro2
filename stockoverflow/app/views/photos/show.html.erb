@@ -25,7 +25,7 @@
   <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
   <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>
   <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %><br>
-<a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a><p>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a><p>
   <b>Flag:</b>
   <%= @photo.flag %>
 </p>
@@ -54,8 +54,13 @@
       <li><%= link_to 'Edit', edit_answer_path(answer) %></li> 
       <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
     </ul>
+    <b>Votes: Votes: <%= @answer.plusminus %><span id="notice"> - <%= notice %></span></br>
+      <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
+      <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
+      <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+
   </div>
-  <% end %>
+<% end %>
 
   <h3>Provide an answer:<h3>
 
