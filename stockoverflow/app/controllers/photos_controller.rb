@@ -76,7 +76,7 @@ class PhotosController < ApplicationController
       current_user.vote_for(@photo)
       redirect_to @photo, notice: 'you liked the photo' 
       
-    rescue ActiveRecord::RecordInvalid
+      rescue ActiveRecord::RecordInvalid
       render :nothing => true, :status => 404
     end
   end
@@ -87,7 +87,7 @@ class PhotosController < ApplicationController
       current_user.vote_against(@photo)
       redirect_to @photo, notice: 'you disliked the photo' 
       
-    rescue ActiveRecord::RecordInvalid
+      rescue ActiveRecord::RecordInvalid
       render :nothing => true, :status => 404
     end
   end
@@ -98,7 +98,7 @@ class PhotosController < ApplicationController
       current_user.unvote_for(@photo)
       redirect_to @photo, notice: 'you removed your vote' 
       
-    rescue ActiveRecord::RecordInvalid
+      rescue ActiveRecord::RecordInvalid
       render :nothing => true, :status => 404
     end
   end
