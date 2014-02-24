@@ -7,12 +7,10 @@ class Photo < ActiveRecord::Base
   has_many :answers
   has_many :photo_tags
   has_many :tags, through: :photo_tags
-<<<<<<< HEAD
+
   
 
   #makes the photo model voteable
   acts_as_voteable
-=======
->>>>>>> 0452a8c54bdd86b7f01e1f847d9d61c3a545d00e
 
 end
