@@ -1,7 +1,7 @@
 Stockoverflow::Application.routes.draw do
   
 
-  
+  get 'tags/:tag', to: 'photos#index', as: :tag
 
   
 
@@ -13,11 +13,7 @@ Stockoverflow::Application.routes.draw do
 
   devise_for :users
 
-  resources :photo_tags
-
   resources :answers
-
-  resources :tags
 
   resources :albums
 

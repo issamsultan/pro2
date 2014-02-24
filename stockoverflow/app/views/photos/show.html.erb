@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <b>Tags:</b>
+  <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+</p>
+
+<p>
   <b>Rating:</b>
   <%= @photo.rating %>
 </p>
