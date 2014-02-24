@@ -12,8 +12,44 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require masonry.pkgd
+//= require isotope
 //= require_tree .
 
 $(document).ready(function() {
-  $('#pagination').jscroll();
+  // $('#pagination').jscroll();
+
+  var $container = $('#container')
+   
+    $($container).isotope({
+      itemSelector: '.item',
+      masonry: {
+        columnWidth: 280
+      }
+    })
+   
+    $container.infinitescroll({
+        navSelector: '#page_nav',
+        nextSelector: '#page_nav .pagination .next_page a',
+        itemSelector: '.item',    
+        pixelsFromNavToBottom: -Math.round($(window).height() * 0.9),
+        bufferPx: Math.round($(window).height() * 0.9),
+        loading      : {
+          msgText  : $container.attr("data-loading-message"),
+          finishedMsg: $container.attr("data-no-more-translators")
+        }
+      },
+      function(newElements) {
+        $container.isotope('appended', $(newElements))
+      }
+  )
+
+  var isotope_not_fixed = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase())
+    $(document).scroll(function() {
+      if(isotope_not_fixed) {
+        isotope_not_fixed = false
+        $('#translators').isotope({itemSelector: '.item'})
+    }
+  })
+
 });
