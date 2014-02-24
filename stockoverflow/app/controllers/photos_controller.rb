@@ -15,6 +15,7 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
+    @answer = Answer.new(photo_id: params[:id], user_id: current_user.id) if current_user
 
     respond_to do |format|
       format.html # show.html.erb

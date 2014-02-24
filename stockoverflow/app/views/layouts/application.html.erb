@@ -11,6 +11,13 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'photos', photos_path %></li>
+      <li><%= link_to 'Albums', albums_path %></li>
+    </ul>
+
 <%= yield %>
 
 </body>
