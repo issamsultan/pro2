@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require iscroll
 //= require masonry.pkgd
 //= require isotope
 //= require_tree .
@@ -19,18 +20,20 @@
 $(document).ready(function() {
   // $('#pagination').jscroll();
 
-  var $container = $('#container')
-   
-    $($container).isotope({
+  var $container = $('#container');
+
+  $container.imagesLoaded(function() {
+ 
+    $container.isotope({
       itemSelector: '.item',
       masonry: {
         columnWidth: 280
-      }
-    })
+        }
+    });
    
     $container.infinitescroll({
-        navSelector: '#page_nav',
-        nextSelector: '#page_nav .pagination .next_page a',
+        navSelector: '#pagination',
+        nextSelector: '#pagination .pagination .next_page',
         itemSelector: '.item',    
         pixelsFromNavToBottom: -Math.round($(window).height() * 0.9),
         bufferPx: Math.round($(window).height() * 0.9),
@@ -40,16 +43,17 @@ $(document).ready(function() {
         }
       },
       function(newElements) {
-        $container.isotope('appended', $(newElements))
+        $container.isotope('appended', $(newElements));
+        // $container.imagesLoaded();
       }
-  )
+    );
 
-  var isotope_not_fixed = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase())
-    $(document).scroll(function() {
-      if(isotope_not_fixed) {
-        isotope_not_fixed = false
-        $('#translators').isotope({itemSelector: '.item'})
-    }
-  })
-
+    // var isotope_not_fixed = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
+    // $(document).scroll(function() {
+    //   if(isotope_not_fixed) {
+    //     isotope_not_fixed = false;
+    //     $('#pagination').isotope({itemSelector: '.item'});
+    //   }
+    // });
+  });
 });

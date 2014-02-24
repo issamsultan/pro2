@@ -100,3 +100,5 @@ a, a:active, a:hover, a:visited a:link {
 .none {
   display: none;
 }
+
+#pagination { clear: left;}
