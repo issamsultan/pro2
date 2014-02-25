@@ -53,3 +53,4 @@ gem 'jquery-rails'
 
 
 gem "devise"
+gem 'acts-as-taggable-on'
