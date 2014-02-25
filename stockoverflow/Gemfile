@@ -8,6 +8,7 @@ gem 'rails', '3.2.17'
 gem 'pg'
 gem 'haml-rails'
 gem 'rails_admin'
+gem 'thumbs_up'
 gem 'will_paginate', '~> 3.0.5'
 gem 'rmagick'
 gem 'carrierwave'
@@ -52,3 +53,4 @@ gem 'jquery-rails'
 
 
 gem "devise"
+gem 'acts-as-taggable-on'

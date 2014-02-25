@@ -2,8 +2,13 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.paginate(:page => params[:page], :per_page => 10)
     # @photos = Photo.all
+
+      if params[:tag]
+        @photos = Photo.tagged_with(params[:tag])
+      else
+        @photos = Photo.paginate(:page => params[:page], :per_page => 10)
+      end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +21,7 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
+    @answer = Answer.new(photo_id: params[:id], user_id: current_user.id) if current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -68,6 +74,39 @@ class PhotosController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def vote_up
+    @photo = Photo.find(params[:id])
+    begin
+      current_user.vote_for(@photo)
+      redirect_to @photo, notice: 'you liked the photo' 
+      
+      rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+  def vote_down
+    @photo = Photo.find(params[:id])
+    begin
+      current_user.vote_against(@photo)
+      redirect_to @photo, notice: 'you disliked the photo' 
+      
+      rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+  def remove_vote
+    @photo = Photo.find(params[:id])
+    begin
+      current_user.unvote_for(@photo)
+      redirect_to @photo, notice: 'you removed your vote' 
+      
+      rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
     end
   end
 

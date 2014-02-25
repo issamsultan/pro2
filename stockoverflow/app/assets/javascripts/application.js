@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require iscroll
-
 //= require isotope
 //= require_tree .
 

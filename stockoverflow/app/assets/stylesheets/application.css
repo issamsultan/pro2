@@ -92,7 +92,8 @@ h1 {
   font-family: 'Magra', sans-serif;
   font-size: 1.5em;
   height: 45px;
-  border-radius: 3px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .photo_title h2 {
@@ -111,7 +112,8 @@ h1 {
   top: 0;
   left: 0;
   overflow: hidden;
-  border-radius: 3px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .blurtop img {
@@ -121,19 +123,21 @@ h1 {
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
-  border-radius: 3px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .question {
   background-color: rgba(255, 255, 255, .5);
   width: 95%;
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 0;
   padding: 0 2.5% 0 2.5%;
   color: black;
   max-height: 80px;
-  border-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .question p {
@@ -158,4 +162,10 @@ a, a:active, a:hover, a:visited a:link {
   display: none;
 }
 
-#pagination { clear: left;}
+#pagination { 
+  clear: left;
+}
+
+#centre {
+  margin-bottom: 30px;
+}
