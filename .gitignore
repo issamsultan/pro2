@@ -14,4 +14,10 @@
 /log/*.log
 /tmp
 
+.bundle
 .DS_Store
+stockoverflow/log/*.log
+stockoverflow/tmp/
+stockoverflow/public/uploads/photo/
+stockoverflow/public/uploads/tmp/
+stockoverflow/public/uploads/user/
