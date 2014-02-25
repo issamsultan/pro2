@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require iscroll
-//= require masonry.pkgd
+
 //= require isotope
 //= require_tree .
 
@@ -26,8 +26,10 @@ $(document).ready(function() {
  
     $container.isotope({
       itemSelector: '.item',
+      layoutMode : 'fitRows',
       masonry: {
-        columnWidth: 280
+        columnWidth: 200,
+        gutterWidth: 10
         }
     });
    
@@ -44,8 +46,7 @@ $(document).ready(function() {
       },
       function(newElements) {
         $container.isotope('appended', $(newElements));
-        
-        // $container.isotope( 'reLayout', callback );
+        // $container.isotope( 'reLayout', $this );
         // $container.imagesLoaded();
       }
     );
