@@ -15,6 +15,8 @@
 body {
   width: 100%;
   background: url("http://i.imgur.com/YDBa5SZ.png");
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -26,14 +28,60 @@ header {
   left: 0;
 }
 
-header nav {
+header a {
+  display:inline-block;
   float:right;
 }
-header nav ul {
-  list-style:none;
+
+.button {
+  width: 100px;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
-header nav li {
-  display:inline-block;
+
+.poptag {
+  float:left;
+  width: 10%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.poptagcloud {
+  float:left;
+  width: 30%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom-right-radius: 3px;
+  display: inline-block;
+}
+
+#upbut {
+  border-bottom-left-radius: 3px;
 }
 
 #page-wrap {
@@ -44,7 +92,7 @@ header nav li {
 
 h1 {
   font-family: 'Lato', sans-serif;
-  font-size: 3em;
+  font-size: 4em;
   font-weight: 300; 
   text-align: center;
 }
@@ -59,15 +107,12 @@ h1 {
   margin-top: 80px;
 }
 
-#center {
-  width: 100%;
-}
-
 #container {
   width: 97%;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .item{
@@ -89,7 +134,7 @@ h1 {
   position: absolute;
   top: 0;
   left: 0px;
-  font-family: 'Magra', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.5em;
   height: 45px;
   border-top-right-radius: 3px;
@@ -142,7 +187,8 @@ h1 {
 
 .question p {
   width: 95%;
-  font-family: 'Inder', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
   font-size: 1.1em;
   white-space: nowrap;
   overflow: hidden;
@@ -168,4 +214,37 @@ a, a:active, a:hover, a:visited a:link {
 
 #centre {
   margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+#centre input{
+  width: 97%;
+  margin: 0 auto;
+  text-align: center;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  font-weight: 400;
+  border: none;
+  border-bottom: solid 2px gray;
+  line-height: 2em;
+}
+
+#tag_cloud {
+  width: 100%;
+  line-height: 1.6em;
+  color: white;
+}
+
+.s { font-size: 1.0rem; }
+.m { font-size: 1.1rem; }
+.l { font-size: 1.2rem; }
+
+#tag_cloud a {
+  float: left;
+  margin-right: 5px;
+  color: white;
+  font-weight: 300;
 }

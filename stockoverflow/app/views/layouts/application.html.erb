@@ -12,37 +12,30 @@
 
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="#">Upload</a></li>
-        <li><a href="#">Signup</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
+    <a href="#"><div class="button">Signup</div></a>
+    <a href="#"><div class="button">Login</div></a>
+    <a href="albums#index"><div class="button">Albums</div></a>
+    <a href="#"><div class="button" id="upbut">Upload</div></a>
+
+    <div class="poptag" style="width:10%;">Popular Tags</div>
+    <div class="poptagcloud">
+      <div id="tag_cloud">
+        <% tag_cloud Photo.tag_counts, %w[s m l] do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <% end %>
+      </div>
+    </div>
   </header>
 
   <div id="page-wrap">
     <div id="title">
-      <h1>stock<a class="bold">overflow</a></h1>
+      <h1><%= link_to 'stock', root_path%><a class="bold">overflow</a></h1>
     </div>
-  <nav>
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <li><%= link_to 'photos', photos_path %></li>
-      <li><%= link_to 'Albums', albums_path %></li>
-    </ul>
-
-  <div id="tag_cloud">
-    <% tag_cloud Photo.tag_counts, %w[s m l] do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-    <% end %>
-  </div>
-
-    
 
     <div id="centre">
       <%= yield %>
     </div>
   </div>
+
 </body>
 </html>
