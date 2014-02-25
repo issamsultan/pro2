@@ -14,4 +14,18 @@ class User < ActiveRecord::Base
   
   #Turns users into voters
   acts_as_voter 
+
+  has_many :photos
+
+
+def role?(role)
+  self.role.to_s == role.to_s
+end
+
+before_validation :set_default_role
+
+private
+def set_default_role
+  self.role ||= :registered
+end
 end
