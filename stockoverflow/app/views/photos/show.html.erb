@@ -54,7 +54,7 @@
 
 
 <h3>Answers: </h3>
-<% @photo.answers.each do |answer| %>
+<% @answers.each do |answer| %>
   <div class='answer'>
     <ul>
       <li>A: <%= answer.content %></li>
@@ -62,7 +62,7 @@
       <li><%= link_to 'Edit', edit_answer_path(answer) %></li> 
       <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
     </ul>
-    <p>Votes: Votes: <%= answer.plusminus %></span></p>
+    <p>Score: <%= answer.plusminus %></span></p>
     </br>
 
     <% if current_user.voted_for?(answer) %>  
@@ -75,7 +75,7 @@
       <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
       <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
     <% end %>
-  </div>
+  </div>  
 <% end %>
 
   <h3>Provide an answer:<h3>

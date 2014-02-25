@@ -111,9 +111,10 @@ class AnswersController < ApplicationController
   def destroy
     @answer = Answer.find(params[:id])
     @answer.destroy
+    @photo = @answer.photo
 
     respond_to do |format|
-      format.html { redirect_to answers_url }
+      format.html { redirect_to @photo }
       format.json { head :no_content }
     end
   end
