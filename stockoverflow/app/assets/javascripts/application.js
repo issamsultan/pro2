@@ -19,6 +19,13 @@
 
 $(document).ready(function() {
   // $('#pagination').jscroll();
+  $('#pagination').addClass('.none');
+
+  // $.each($('.item'), function (index, obj) {
+  //   $(this).css({
+  //       'max-width' : (275 + (Math.random() * 50))
+  //   });
+  // });
 
   var $container = $('#container');
 
@@ -29,7 +36,7 @@ $(document).ready(function() {
       layoutMode : 'fitRows',
       masonry: {
         columnWidth: 200,
-        gutterWidth: 10
+        gutterWidth: 20
         }
     });
    
@@ -46,6 +53,7 @@ $(document).ready(function() {
       },
       function(newElements) {
         $container.isotope('appended', $(newElements));
+        
         // $container.isotope( 'reLayout', $this );
         // $container.imagesLoaded();
       }

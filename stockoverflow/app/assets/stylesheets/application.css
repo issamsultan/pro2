@@ -13,12 +13,61 @@
  */
 
 body {
+  width: 100%;
+  background: url("http://i.imgur.com/YDBa5SZ.png");
+}
+
+header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+header nav {
+  float:right;
+}
+header nav ul {
+  list-style:none;
+}
+header nav li {
+  display:inline-block;
+}
+
+#page-wrap {
   font-family: helvetica, sans-serif;
+  width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 3em;
+  font-weight: 300; 
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700; 
+}
+
+#title {
+  width: 100%;
+  height: 50px;
+  margin-top: 80px;
+}
+
+#center {
+  width: 100%;
 }
 
 #container {
-  width: 960px;
+  width: 97%;
   margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
 }
 
 .item{
@@ -43,6 +92,7 @@ body {
   font-family: 'Magra', sans-serif;
   font-size: 1.5em;
   height: 45px;
+  border-radius: 3px;
 }
 
 .photo_title h2 {
@@ -83,6 +133,7 @@ body {
   padding: 0 2.5% 0 2.5%;
   color: black;
   max-height: 80px;
+  border-radius: 3px;
 }
 
 .question p {
