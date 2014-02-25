@@ -36664,3 +36664,1547 @@ Served asset /down32.png - 304 Not Modified (0ms)
 
 Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-24 19:51:49 +0000
 Served asset /up24.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 14:01:43 +0000
+Processing by PhotosController#index as HTML
+  [1m[36mActsAsTaggableOn::Tag Load (19.5ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+PG::UndefinedTable: ERROR:  relation "taggings" does not exist
+LINE 1: ...tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings"...
+                                                             ^
+: SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  Rendered photos/index.html.erb within layouts/application (34.1ms)
+Completed 500 Internal Server Error in 43.7ms
+
+ActiveRecord::StatementInvalid - PG::UndefinedTable: ERROR:  relation "taggings" does not exist
+LINE 1: ...tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings"...
+                                                             ^
+: SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id:
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract_adapter.rb:285:in `rescue in log'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract_adapter.rb:280:in `log'
+  activerecord (3.2.17) lib/active_record/connection_adapters/postgresql_adapter.rb:659:in `exec_query'
+  activerecord (3.2.17) lib/active_record/connection_adapters/postgresql_adapter.rb:1262:in `select'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/database_statements.rb:18:in `select_all'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:61:in `block in select_all'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:75:in `cache_sql'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:61:in `select_all'
+  activerecord (3.2.17) lib/active_record/querying.rb:38:in `block in find_by_sql'
+  activerecord (3.2.17) lib/active_record/explain.rb:41:in `logging_query_plan'
+  activerecord (3.2.17) lib/active_record/querying.rb:37:in `find_by_sql'
+  activerecord (3.2.17) lib/active_record/relation.rb:171:in `exec_queries'
+  activerecord (3.2.17) lib/active_record/relation.rb:160:in `block in to_a'
+  activerecord (3.2.17) lib/active_record/explain.rb:34:in `logging_query_plan'
+  activerecord (3.2.17) lib/active_record/relation.rb:159:in `to_a'
+  activerecord (3.2.17) lib/active_record/relation/finder_methods.rb:159:in `all'
+  acts-as-taggable-on (2.3.3) lib/acts_as_taggable_on/tags_helper.rb:5:in `tag_cloud'
+  app/views/photos/index.html.erb:4:in `_app_views_photos_index_html_erb___1633363462703466958_70175170275500'
+  actionpack (3.2.17) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.17) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.17) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:18:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.17) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  remotipart (1.2.1) lib/remotipart/render_overrides.rb:14:in `render_with_remotipart'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.17) lib/action_controller/metal/mime_responds.rb:196:in `respond_to'
+  app/controllers/photos_controller.rb:15:in `index'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:414:in `_run__927356004015927538__process_action__1094565801888928171__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.17) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  rack-pjax (0.7.0) lib/rack/pjax.rb:12:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/head.rb:14:in `call'
+  remotipart (1.2.1) lib/remotipart/middleware.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.17) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `_run__1515366596145531706__call__3384898433518979166__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/70175170103840/variables" for 127.0.0.1 at 2014-02-25 14:01:43 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 14:02:13 +0000
+Processing by PhotosController#index as HTML
+  [1m[35mActsAsTaggableOn::Tag Load (1.2ms)[0m  SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+PG::UndefinedTable: ERROR:  relation "taggings" does not exist
+LINE 1: ...tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings"...
+                                                             ^
+: SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  Rendered photos/index.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 6.0ms
+
+ActiveRecord::StatementInvalid - PG::UndefinedTable: ERROR:  relation "taggings" does not exist
+LINE 1: ...tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings"...
+                                                             ^
+: SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id:
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract_adapter.rb:285:in `rescue in log'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract_adapter.rb:280:in `log'
+  activerecord (3.2.17) lib/active_record/connection_adapters/postgresql_adapter.rb:659:in `exec_query'
+  activerecord (3.2.17) lib/active_record/connection_adapters/postgresql_adapter.rb:1262:in `select'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/database_statements.rb:18:in `select_all'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:61:in `block in select_all'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:75:in `cache_sql'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:61:in `select_all'
+  activerecord (3.2.17) lib/active_record/querying.rb:38:in `block in find_by_sql'
+  activerecord (3.2.17) lib/active_record/explain.rb:41:in `logging_query_plan'
+  activerecord (3.2.17) lib/active_record/querying.rb:37:in `find_by_sql'
+  activerecord (3.2.17) lib/active_record/relation.rb:171:in `exec_queries'
+  activerecord (3.2.17) lib/active_record/relation.rb:160:in `block in to_a'
+  activerecord (3.2.17) lib/active_record/explain.rb:34:in `logging_query_plan'
+  activerecord (3.2.17) lib/active_record/relation.rb:159:in `to_a'
+  activerecord (3.2.17) lib/active_record/relation/finder_methods.rb:159:in `all'
+  acts-as-taggable-on (2.3.3) lib/acts_as_taggable_on/tags_helper.rb:5:in `tag_cloud'
+  app/views/photos/index.html.erb:4:in `_app_views_photos_index_html_erb___1633363462703466958_70175170275500'
+  actionpack (3.2.17) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.17) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.17) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:18:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.17) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  remotipart (1.2.1) lib/remotipart/render_overrides.rb:14:in `render_with_remotipart'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:414:in `_run__927356004015927538__process_action__1094565801888928171__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.17) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  rack-pjax (0.7.0) lib/rack/pjax.rb:12:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/head.rb:14:in `call'
+  remotipart (1.2.1) lib/remotipart/middleware.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.17) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `_run__1515366596145531706__call__3384898433518979166__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/70175177861420/variables" for 127.0.0.1 at 2014-02-25 14:02:13 +0000
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" LIMIT 5 OFFSET 0[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 14:02:14 +0000
+Processing by PhotosController#index as HTML
+  [1m[35mActsAsTaggableOn::Tag Load (0.8ms)[0m  SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+PG::UndefinedTable: ERROR:  relation "taggings" does not exist
+LINE 1: ...tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings"...
+                                                             ^
+: SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  Rendered photos/index.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 4.6ms
+
+ActiveRecord::StatementInvalid - PG::UndefinedTable: ERROR:  relation "taggings" does not exist
+LINE 1: ...tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings"...
+                                                             ^
+: SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id:
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract_adapter.rb:285:in `rescue in log'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract_adapter.rb:280:in `log'
+  activerecord (3.2.17) lib/active_record/connection_adapters/postgresql_adapter.rb:659:in `exec_query'
+  activerecord (3.2.17) lib/active_record/connection_adapters/postgresql_adapter.rb:1262:in `select'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/database_statements.rb:18:in `select_all'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:61:in `block in select_all'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:75:in `cache_sql'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/query_cache.rb:61:in `select_all'
+  activerecord (3.2.17) lib/active_record/querying.rb:38:in `block in find_by_sql'
+  activerecord (3.2.17) lib/active_record/explain.rb:41:in `logging_query_plan'
+  activerecord (3.2.17) lib/active_record/querying.rb:37:in `find_by_sql'
+  activerecord (3.2.17) lib/active_record/relation.rb:171:in `exec_queries'
+  activerecord (3.2.17) lib/active_record/relation.rb:160:in `block in to_a'
+  activerecord (3.2.17) lib/active_record/explain.rb:34:in `logging_query_plan'
+  activerecord (3.2.17) lib/active_record/relation.rb:159:in `to_a'
+  activerecord (3.2.17) lib/active_record/relation/finder_methods.rb:159:in `all'
+  acts-as-taggable-on (2.3.3) lib/acts_as_taggable_on/tags_helper.rb:5:in `tag_cloud'
+  app/views/photos/index.html.erb:4:in `_app_views_photos_index_html_erb___1633363462703466958_70175170275500'
+  actionpack (3.2.17) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.17) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.17) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:18:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.17) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  remotipart (1.2.1) lib/remotipart/render_overrides.rb:14:in `render_with_remotipart'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:414:in `_run__927356004015927538__process_action__1094565801888928171__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.17) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  rack-pjax (0.7.0) lib/rack/pjax.rb:12:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/head.rb:14:in `call'
+  remotipart (1.2.1) lib/remotipart/middleware.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.17) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `_run__1515366596145531706__call__3384898433518979166__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/70175170618740/variables" for 127.0.0.1 at 2014-02-25 14:02:14 +0000
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" LIMIT 5 OFFSET 0[0m
+Connecting to database specified by database.yml
+  [1m[36m (5.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreatePhotos (20140221165057)
+Migrating to CreateAlbums (20140221165130)
+Migrating to CreateTags (20140221165142)
+Migrating to CreateAnswers (20140221165155)
+Migrating to CreatePhotoTags (20140221171042)
+Migrating to DeviseCreateUsers (20140221222425)
+Migrating to CreateRailsAdminHistoriesTable (20140221230003)
+Migrating to ThumbsUpMigration (20140222124543)
+Migrating to AddImageToUsers (20140224151345)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (15.8ms)[0m  [1mALTER TABLE "users" ADD COLUMN "image" character varying(255)[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140224151345')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to DropTagsAndPhotoTagsTable (20140224161011)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (9.3ms)[0m  [1mDROP TABLE "photo_tags"[0m
+  [1m[35m (1.9ms)[0m  DROP TABLE "tags"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140224161011')[0m
+  [1m[35m (2.1ms)[0m  COMMIT
+Migrating to ActsAsTaggableOnMigration (20140224162157)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "tags" ("id" serial primary key, "name" character varying(255)) 
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "taggings" ("id" serial primary key, "tag_id" integer, "taggable_id" integer, "taggable_type" character varying(255), "tagger_id" integer, "tagger_type" character varying(255), "context" character varying(128), "created_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  CREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140224162157')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 14:08:34 +0000
+Processing by PhotosController#index as HTML
+  [1m[36mActsAsTaggableOn::Tag Load (2.2ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  Rendered photos/index.html.erb within layouts/application (45.7ms)
+Completed 500 Internal Server Error in 51.8ms
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/photos/index.html.erb:24:in `_app_views_photos_index_html_erb__3355071753101317466_70177717597420'
+  actionpack (3.2.17) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.17) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.17) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/template_renderer.rb:18:in `render'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.17) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.17) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.17) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.17) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  remotipart (1.2.1) lib/remotipart/render_overrides.rb:14:in `render_with_remotipart'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.17) lib/action_controller/metal/mime_responds.rb:196:in `respond_to'
+  app/controllers/photos_controller.rb:15:in `index'
+  actionpack (3.2.17) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:414:in `_run__2025358965630579887__process_action__55315904847274592__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.17) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.17) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.17) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.17) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.17) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.17) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.17) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.17) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.17) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  rack-pjax (0.7.0) lib/rack/pjax.rb:12:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/head.rb:14:in `call'
+  remotipart (1.2.1) lib/remotipart/middleware.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.17) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.17) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `_run__281350706840396190__call__1434054912092831238__callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.17) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.17) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/70177757684440/variables" for 127.0.0.1 at 2014-02-25 14:08:34 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Processing by PhotosController#index as HTML
+  [1m[35mActsAsTaggableOn::Tag Load (0.9ms)[0m  SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos" LIMIT 5 OFFSET 0[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 1 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 2 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 3 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered photos/index.html.erb within layouts/application (74.8ms)
+Compiled photos.css  (10ms)  (pid 30310)
+Compiled application.css  (1ms)  (pid 30310)
+Compiled application.js  (5ms)  (pid 30310)
+Completed 200 OK in 166.9ms (Views: 163.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /albums.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /photos.css - 200 OK (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /style.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /answers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /albums.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /answers.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/uploads/photo/image/1/thumb_http%3A/cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/1/thumb_http%3A/cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/uploads/photo/image/3/thumb_qtown.jpg" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/3/thumb_qtown.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/uploads/photo/image/4/thumb_banner_dj.jpg" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/4/thumb_banner_dj.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/uploads/photo/image/2/thumb_http%3A/upload.wikimedia.org/wikipedia/commons/b/b4/London_Eye_Twilight_April_2006.jpg" for 127.0.0.1 at 2014-02-25 14:08:40 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/2/thumb_http%3A/upload.wikimedia.org/wikipedia/commons/b/b4/London_Eye_Twilight_April_2006.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/photos/4" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPhoto Load (0.6ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."photo_id" = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered photos/show.html.erb within layouts/application (28.5ms)
+Completed 200 OK in 99.0ms (Views: 31.9ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/uploads/photo/image/4/detail_banner_dj.jpg" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/4/detail_banner_dj.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /up24.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 14:08:57 +0000
+Served asset /down32.png - 304 Not Modified (1ms)
+
+
+Started POST "/answers" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WiBhVeZ7KB6nknWs4W/g3K8EuekxOm9jVIV75+8GF4s=", "answer"=>{"photo_id"=>"4", "user_id"=>"1", "content"=>"use a tripod"}, "commit"=>"Submit"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "answers" ("content", "created_at", "flag", "photo_id", "updated_at", "user_id", "vote") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["content", "use a tripod"], ["created_at", Tue, 25 Feb 2014 14:09:11 UTC +00:00], ["flag", nil], ["photo_id", 4], ["updated_at", Tue, 25 Feb 2014 14:09:11 UTC +00:00], ["user_id", 1], ["vote", nil]]
+  [1m[35m (6.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos/4
+Completed 302 Found in 13.8ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/photos/4" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'[0m
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."photo_id" = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered photos/show.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 16.0ms (Views: 12.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/uploads/photo/image/4/detail_banner_dj.jpg" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/4/detail_banner_dj.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /up24.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 14:09:11 +0000
+Served asset /down32.png - 304 Not Modified (0ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Processing by PhotosController#index as HTML
+  [1m[36mActsAsTaggableOn::Tag Load (0.9ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos" LIMIT 5 OFFSET 0
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 1 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 2 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 3 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered photos/index.html.erb within layouts/application (56.4ms)
+Completed 200 OK in 61.5ms (Views: 58.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/uploads/photo/image/1/thumb_http%3A/cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/1/thumb_http%3A/cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/uploads/photo/image/4/thumb_banner_dj.jpg" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/4/thumb_banner_dj.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/uploads/photo/image/3/thumb_qtown.jpg" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/3/thumb_qtown.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/uploads/photo/image/2/thumb_http%3A/upload.wikimedia.org/wikipedia/commons/b/b4/London_Eye_Twilight_April_2006.jpg" for 127.0.0.1 at 2014-02-25 14:17:37 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/2/thumb_http%3A/upload.wikimedia.org/wikipedia/commons/b/b4/London_Eye_Twilight_April_2006.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Processing by PhotosController#new as HTML
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" IS NULL AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered photos/_form.html.erb (15.6ms)
+  Rendered photos/new.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 24.8ms (Views: 23.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:17:38 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/photos" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WiBhVeZ7KB6nknWs4W/g3K8EuekxOm9jVIV75+8GF4s=", "photo"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fa70be16c70 @original_filename="jags-skill-thumb-fin.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"jags-skill-thumb-fin.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<Tempfile:/var/folders/n9/9_4pzsl14tjd7nkhy54dlqmw0000gn/T/RackMultipart20140225-30310-1vrqdwh>>, "remote_image_url"=>"", "title"=>"ja skilsl", "description"=>"efdsfd", "tag_list"=>"music, cool", "rating"=>"", "flag"=>"", "question"=>"is this coooool?", "album_id"=>""}, "commit"=>"Create Photo"}
+  [1m[35mActsAsTaggableOn::Tag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" IS NULL AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "photos" ("album_id", "created_at", "description", "flag", "image", "question", "rating", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["album_id", nil], ["created_at", Tue, 25 Feb 2014 14:18:24 UTC +00:00], ["description", "efdsfd"], ["flag", nil], ["image", "jags-skill-thumb-fin.jpg"], ["question", "is this coooool?"], ["rating", nil], ["title", "ja skilsl"], ["updated_at", Tue, 25 Feb 2014 14:18:24 UTC +00:00]]
+  [1m[36mActsAsTaggableOn::Tag Load (1.7ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (lower(name) = 'music' OR lower(name) = 'cool')[0m
+  [1m[35mActsAsTaggableOn::Tag Exists (0.2ms)[0m  SELECT 1 AS one FROM "tags" WHERE "tags"."name" = 'music' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tags" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "music"]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.2ms)[0m  SELECT 1 AS one FROM "tags" WHERE "tags"."name" = 'cool' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "tags" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "cool"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 5 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tagging Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "taggings" WHERE ("taggings"."tag_id" = 1 AND "taggings"."taggable_type" = 'Photo' AND "taggings"."taggable_id" = 5 AND "taggings"."context" = 'tags' AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (18.4ms)[0m  INSERT INTO "taggings" ("context", "created_at", "tag_id", "taggable_id", "taggable_type", "tagger_id", "tagger_type") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["context", "tags"], ["created_at", Tue, 25 Feb 2014 14:18:24 UTC +00:00], ["tag_id", 1], ["taggable_id", 5], ["taggable_type", "Photo"], ["tagger_id", nil], ["tagger_type", nil]]
+  [1m[36mActsAsTaggableOn::Tagging Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "taggings" WHERE ("taggings"."tag_id" = 2 AND "taggings"."taggable_type" = 'Photo' AND "taggings"."taggable_id" = 5 AND "taggings"."context" = 'tags' AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "taggings" ("context", "created_at", "tag_id", "taggable_id", "taggable_type", "tagger_id", "tagger_type") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["context", "tags"], ["created_at", Tue, 25 Feb 2014 14:18:24 UTC +00:00], ["tag_id", 2], ["taggable_id", 5], ["taggable_type", "Photo"], ["tagger_id", nil], ["tagger_type", nil]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos/5
+Completed 302 Found in 183.8ms (ActiveRecord: 25.6ms)
+
+
+Started GET "/photos/5" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "5"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 5 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 5 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 5 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."photo_id" = 5[0m
+  Rendered photos/show.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 18.1ms (Views: 14.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /up24.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 14:18:24 +0000
+Served asset /down32.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Processing by PhotosController#index as HTML
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos" LIMIT 5 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "photos" 
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 1 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 2 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 3 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mActsAsTaggableOn::Tag Load (1.0ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 5 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered photos/index.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 26.7ms (Views: 22.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/uploads/photo/image/1/thumb_http%3A/cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/1/thumb_http%3A/cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/uploads/photo/image/4/thumb_banner_dj.jpg" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/4/thumb_banner_dj.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/uploads/photo/image/2/thumb_http%3A/upload.wikimedia.org/wikipedia/commons/b/b4/London_Eye_Twilight_April_2006.jpg" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/2/thumb_http%3A/upload.wikimedia.org/wikipedia/commons/b/b4/London_Eye_Twilight_April_2006.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/uploads/photo/image/3/thumb_qtown.jpg" for 127.0.0.1 at 2014-02-25 14:18:29 +0000
+
+ActionController::RoutingError (No route matches [GET] "/uploads/photo/image/3/thumb_qtown.jpg"):
+  actionpack (3.2.17) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.17) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.17) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.17) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.17) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.17) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.17) lib/rails/engine.rb:484:in `call'
+  railties (3.2.17) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.17) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Max/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/actionpack-3.2.17/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/tags/music" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Processing by PhotosController#index as HTML
+  Parameters: {"tag"=>"music"}
+  [1m[35mActsAsTaggableOn::Tag Load (1.3ms)[0m  SELECT "tags".* FROM "tags" WHERE (lower(name) = 'music')
+  [1m[36mActsAsTaggableOn::Tag Load (0.6ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN photos ON photos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Photo' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT photos.id FROM "photos" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos" JOIN taggings photos_taggings_a213908 ON photos_taggings_a213908.taggable_id = "photos".id AND photos_taggings_a213908.taggable_type = 'Photo' AND photos_taggings_a213908.tag_id = 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 5 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered photos/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 15.7ms (Views: 11.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /style.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 14:18:34 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
