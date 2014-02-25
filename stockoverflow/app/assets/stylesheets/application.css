@@ -13,40 +13,136 @@
  */
 
 body {
-  font-family: helvetica, sans-serif;
+  width: 100%;
+  background: url("http://i.imgur.com/YDBa5SZ.png");
 }
 
-.photo_container {
-  width: 30%;
-  color: white;
-  position: relative;
-  margin: 10px;
-  padding: 10px;
-  overflow: hidden;
-  height: 30vh;
+header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+header nav {
+  float:right;
+}
+header nav ul {
+  list-style:none;
+}
+header nav li {
+  display:inline-block;
+}
+
+#page-wrap {
+  font-family: helvetica, sans-serif;
+  width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 3em;
+  font-weight: 300; 
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700; 
+}
+
+#title {
+  width: 100%;
+  height: 50px;
+  margin-top: 80px;
+}
+
+#center {
+  width: 100%;
+}
+
+#container {
+  width: 97%;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
 }
 
-.photo_image img {
+.item{
+  max-width: 300px;
+  max-height: 500px;
+  color: white;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.item img {
   width: 100%;
-  position:absolute;
-  left:0px;
-  top:0px;
-  z-index:-1;
+  border-radius: 3px;
 }
 
 .photo_title {
+  background-color: rgba(255, 255, 255, .5);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  font-family: 'Magra', sans-serif;
+  font-size: 1.5em;
+  height: 45px;
+  border-radius: 3px;
+}
+
+.photo_title h2 {
+  vertical-align: middle;
+  padding: 10px;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blurtop {
+  width: 100%;
+  height: 45px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.blurtop img {
+  width: 100%;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  border-radius: 3px;
 }
 
 .question {
   background-color: rgba(255, 255, 255, .5);
-  width: 100%;
+  width: 95%;
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 10px;
-  padding-top: 0;
+  padding: 0 2.5% 0 2.5%;
   color: black;
+  max-height: 80px;
+  border-radius: 3px;
+}
+
+.question p {
+  width: 95%;
+  font-family: 'Inder', sans-serif;
+  font-size: 1.1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 a, a:active, a:hover, a:visited a:link {
@@ -62,6 +158,4 @@ a, a:active, a:hover, a:visited a:link {
   display: none;
 }
 
-
-
-
+#pagination { clear: left;}
