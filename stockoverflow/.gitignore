@@ -13,3 +13,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+.bundle
+.DS_Store
+/log/*.log
+/tmp/
+/public/uploads/photo/
+/public/uploads/tmp/
+/public/uploads/user/
