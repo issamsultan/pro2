@@ -58,7 +58,6 @@ class AnswersController < ApplicationController
   # PUT /answers/1.json
   def update
     @answer = Answer.find(params[:id])
-
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
@@ -72,6 +71,7 @@ class AnswersController < ApplicationController
 
   def vote_up
     @answer = Answer.find(params[:id])
+    @photo = @answer.photo
     begin
       current_user.vote_for(@answer)
       redirect_to @photo, notice: 'you liked the answer' 
@@ -83,6 +83,7 @@ class AnswersController < ApplicationController
 
   def vote_down
     @answer = Answer.find(params[:id])
+    @photo = @answer.photo
     begin
       current_user.vote_against(@answer)
       redirect_to @photo, notice: 'you disliked the answer' 

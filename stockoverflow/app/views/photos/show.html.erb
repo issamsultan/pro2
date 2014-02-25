@@ -54,10 +54,19 @@
       <li><%= link_to 'Edit', edit_answer_path(answer) %></li> 
       <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
     </ul>
-    <b>Votes: Votes: <%= @answer.plusminus %><span id="notice"> - <%= notice %></span></br>
-      <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
-      <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
-      <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+    <p>Votes: Votes: <%= answer.plusminus %></span></p>
+    </br>
+
+      <% if current_user.voted_for?(answer) %>  
+        <p>You voted for this answer</p>
+        <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+      <% elsif current_user.voted_against?(answer) %>
+        <p>You voted down this answer</p>
+        <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+      <% else %> 
+        <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
+        <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
+      <% end %>
 
   </div>
 <% end %>
