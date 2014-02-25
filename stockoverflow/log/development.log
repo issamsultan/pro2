@@ -60824,3 +60824,350 @@ Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 16:21:30 +0000
 Served asset /down32.png - 304 Not Modified (0ms)
 >>>>>>> add_vote_answer
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/photos/4" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPhoto Load (1.2ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo'[0m
+  [1m[35mAnswer Load (1.1ms)[0m  SELECT answers.*, SUM(CASE votes.vote WHEN 't' THEN 1 WHEN 'f' THEN -1 ELSE 0 END) AS plusminus_tally, COUNT(votes.id) AS vote_count FROM "answers" LEFT OUTER JOIN votes ON answers.id = votes.voteable_id AND votes.voteable_type = 'Answer' WHERE "answers"."photo_id" = 4 GROUP BY answers.id, answers.content, answers.user_id, answers.vote, answers.photo_id, answers.flag, answers.created_at, answers.updated_at ORDER BY plusminus_tally DESC
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 14 AND "votes"."voteable_type" = 'Answer'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'[0m
+  Rendered photos/show.html.erb within layouts/application (77.8ms)
+Completed 200 OK in 194.6ms (Views: 94.8ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /answers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /albums.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /style.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /photos.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /albums.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /answers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /photos.js - 304 Not Modified (39ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /up24.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 16:33:33 +0000
+Served asset /down32.png - 304 Not Modified (1ms)
+
+
+Started GET "/photos/4" for 127.0.0.1 at 2014-02-25 16:33:36 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo'
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT answers.*, SUM(CASE votes.vote WHEN 't' THEN 1 WHEN 'f' THEN -1 ELSE 0 END) AS plusminus_tally, COUNT(votes.id) AS vote_count FROM "answers" LEFT OUTER JOIN votes ON answers.id = votes.voteable_id AND votes.voteable_type = 'Answer' WHERE "answers"."photo_id" = 4 GROUP BY answers.id, answers.content, answers.user_id, answers.vote, answers.photo_id, answers.flag, answers.created_at, answers.updated_at ORDER BY plusminus_tally DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 14 AND "votes"."voteable_type" = 'Answer'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'
+  Rendered photos/show.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 21.3ms (Views: 15.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:36 +0000
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /up24.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 16:33:37 +0000
+Served asset /down32.png - 304 Not Modified (0ms)
+
+
+Started POST "/photos/4/vote_up" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Processing by PhotosController#vote_up as HTML
+  Parameters: {"authenticity_token"=>"WiBhVeZ7KB6nknWs4W/g3K8EuekxOm9jVIV75+8GF4s=", "id"=>"4"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mVote Exists (0.4ms)[0m  SELECT 1 AS one FROM "votes" WHERE ("votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."voter_type" = 'User' AND "votes"."voter_id" = 1) LIMIT 1
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "votes" ("created_at", "updated_at", "vote", "voteable_id", "voteable_type", "voter_id", "voter_type") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Tue, 25 Feb 2014 16:33:40 UTC +00:00], ["updated_at", Tue, 25 Feb 2014 16:33:40 UTC +00:00], ["vote", true], ["voteable_id", 4], ["voteable_type", "Photo"], ["voter_id", 1], ["voter_type", "User"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos/4
+Completed 302 Found in 25.4ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/photos/4" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo'
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT answers.*, SUM(CASE votes.vote WHEN 't' THEN 1 WHEN 'f' THEN -1 ELSE 0 END) AS plusminus_tally, COUNT(votes.id) AS vote_count FROM "answers" LEFT OUTER JOIN votes ON answers.id = votes.voteable_id AND votes.voteable_type = 'Answer' WHERE "answers"."photo_id" = 4 GROUP BY answers.id, answers.content, answers.user_id, answers.vote, answers.photo_id, answers.flag, answers.created_at, answers.updated_at ORDER BY plusminus_tally DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 14 AND "votes"."voteable_type" = 'Answer'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'
+  Rendered photos/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 62.0ms (Views: 57.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /up24.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 16:33:40 +0000
+Served asset /down32.png - 304 Not Modified (0ms)
+
+
+Started POST "/answers/14/remove_vote" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Processing by AnswersController#remove_vote as HTML
+  Parameters: {"authenticity_token"=>"WiBhVeZ7KB6nknWs4W/g3K8EuekxOm9jVIV75+8GF4s=", "id"=>"14"}
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT 1[0m  [["id", "14"]]
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mVote Load (0.4ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."voteable_id" = 14 AND "votes"."voteable_type" = 'Answer'
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "votes" WHERE "votes"."id" = $1  [["id", 67]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos/4
+Completed 302 Found in 7.5ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/photos/4" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = 4 AND "taggings"."taggable_type" = 'Photo' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo' AND "votes"."vote" = 'f'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 4 AND "votes"."voteable_type" = 'Photo'[0m
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT answers.*, SUM(CASE votes.vote WHEN 't' THEN 1 WHEN 'f' THEN -1 ELSE 0 END) AS plusminus_tally, COUNT(votes.id) AS vote_count FROM "answers" LEFT OUTER JOIN votes ON answers.id = votes.voteable_id AND votes.voteable_type = 'Answer' WHERE "answers"."photo_id" = 4 GROUP BY answers.id, answers.content, answers.user_id, answers.vote, answers.photo_id, answers.flag, answers.created_at, answers.updated_at ORDER BY plusminus_tally DESC
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 16 AND "votes"."voteable_type" = 'Answer'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 't' AND "votes"."voteable_id" = 14 AND "votes"."voteable_type" = 'Answer'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = 1 AND "votes"."voter_type" = 'User' AND "votes"."vote" = 'f' AND "votes"."voteable_id" = 14 AND "votes"."voteable_type" = 'Answer'
+  Rendered photos/show.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 20.4ms (Views: 15.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /albums.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /photos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/albums.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /albums.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:43 +0000
+Served asset /answers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.infinitescroll.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:44 +0000
+Served asset /jquery.infinitescroll.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:44 +0000
+Served asset /photos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 16:33:44 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/up24.png" for 127.0.0.1 at 2014-02-25 16:33:44 +0000
+Served asset /up24.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/down32.png" for 127.0.0.1 at 2014-02-25 16:33:44 +0000
+Served asset /down32.png - 304 Not Modified (0ms)
