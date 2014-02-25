@@ -1,19 +1,26 @@
 Stockoverflow::Application.routes.draw do
-  
 
   get 'tags/:tag', to: 'photos#index', as: :tag
 
-  
 
   
-
-  
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
 
-  resources :answers
+  resources :photo_tags
+
+  resources :answers do
+    member do
+      post :vote_up
+    end
+    member do
+      post :vote_down
+    end
+    member do 
+      post :remove_vote
+    end
+  end
 
   resources :albums
 

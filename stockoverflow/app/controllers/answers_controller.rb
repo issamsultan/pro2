@@ -58,7 +58,6 @@ class AnswersController < ApplicationController
   # PUT /answers/1.json
   def update
     @answer = Answer.find(params[:id])
-
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
@@ -70,14 +69,52 @@ class AnswersController < ApplicationController
     end
   end
 
+  def vote_up
+    @answer = Answer.find(params[:id])
+    @photo = @answer.photo
+    begin
+      current_user.vote_for(@answer)
+      redirect_to @photo, notice: 'you liked the answer' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+  def vote_down
+    @answer = Answer.find(params[:id])
+    @photo = @answer.photo
+    begin
+      current_user.vote_against(@answer)
+      redirect_to @photo, notice: 'you disliked the answer' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+  def remove_vote
+    @answer = Answer.find(params[:id])
+    @photo = @answer.photo
+    begin
+      current_user.unvote_for(@answer)
+      redirect_to @photo, notice: 'you removed your vote' 
+      
+    rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+
+
   # DELETE /answers/1
   # DELETE /answers/1.json
   def destroy
     @answer = Answer.find(params[:id])
     @answer.destroy
+    @photo = @answer.photo
 
     respond_to do |format|
-      format.html { redirect_to answers_url }
+      format.html { redirect_to @photo }
       format.json { head :no_content }
     end
   end
