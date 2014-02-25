@@ -95,9 +95,10 @@ class AnswersController < ApplicationController
 
   def remove_vote
     @answer = Answer.find(params[:id])
+    @photo = @answer.photo
     begin
       current_user.unvote_for(@answer)
-      redirect_to @answer, notice: 'you removed your vote' 
+      redirect_to @photo, notice: 'you removed your vote' 
       
     rescue ActiveRecord::RecordInvalid
       render :nothing => true, :status => 404
