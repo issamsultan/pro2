@@ -49,10 +49,12 @@
   </p>
 
 
+  <% if can? :edit, @photo %>
+    <%= link_to 'Edit', edit_photo_path(@photo) %> 
+  <% end %>
 
-  <%= link_to 'Edit', edit_photo_path(@photo) %> |
   <%= link_to 'Back', photos_path %>
-
+  
 </div>
 
 
@@ -62,8 +64,12 @@
     <ul>
       <li>A: <%= answer.content %></li>
       <li>User: <%= answer.user.email %></li>
-      <li><%= link_to 'Edit', edit_answer_path(answer) %></li> 
-      <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
+      <% if can? :edit, answer %>
+        <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
+      <% end %>
+      <% if can? :destroy, answer %>       
+        <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
+      <% end %>
     </ul>
     <p>Score: <%= answer.plusminus %></span></p>
     </br>

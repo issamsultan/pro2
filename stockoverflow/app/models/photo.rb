@@ -7,6 +7,12 @@ class Photo < ActiveRecord::Base
   has_many :answers
   belongs_to :user
 
+  validates :description, :length => { :maximum => 500 }
+  validates :image, presence: true
+  validates :title, presence: true
+  validates :question, presence: true
+
+
 
   #makes the photo model voteable
   acts_as_voteable
