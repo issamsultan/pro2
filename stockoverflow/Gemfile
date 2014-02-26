@@ -12,6 +12,7 @@ gem 'thumbs_up'
 gem 'will_paginate', '~> 3.0.5'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'cancan'
 
 group :development, :test do
   gem 'pry-rails'

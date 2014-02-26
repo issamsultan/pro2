@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  load_and_authorize_resource
   # GET /photos
   # GET /photos.json
   def index
@@ -49,7 +50,7 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(params[:photo])
-
+    @photo.user = current_user
     respond_to do |format|
       if @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }

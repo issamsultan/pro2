@@ -1,61 +1,59 @@
 
+<div class='photo_wrap'>
+  <div id='show_image'>
+    <%= image_tag @photo.image.detail.url %>
+  </div>
+  
 
-<p>
-  <b>Image:</b>
-  <%= image_tag @photo.image.detail.url %>
-</p>
+  <p>
+    <b><%= @photo.title %><b>
+  </p>
 
-<p>
-  <b>Title:</b>
-  <%= @photo.title %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%= @photo.description %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%= @photo.description %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-</p>
-
-<p>
-  <b>Rating:</b>
-  <%= @photo.rating %>
-</p>
-
-<p>
-  <b>Votes: <%= @photo.plusminus %></br>
-  <% if current_user.voted_for?(@photo) %>
-    <p>You liked this photo</p>
-    <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
-  <% elsif current_user.voted_against?(@photo)%>
-    <p>You disliked this photo</p>
-    <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
-  <% else %>
-    <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
-    <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>   
-  <% end %>
-    
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a><p>
-  <b>Flag:</b>
-  <%= @photo.flag %>
-</p>
-
-<p>
-  <b>Question:</b>
-  <%= @photo.question %>
-</p>
-
-<p>
-  <b>Album:</b>
-  <%= @photo.album_id %>
-</p>
+  <p>
+    <b>Tags:</b>
+    <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  </p>
 
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+  <p>
+    <b>Votes: <%= @photo.plusminus %></br>
+    <% if current_user.voted_for?(@photo) %>
+      <p>You liked this photo</p>
+      <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
+    <% elsif current_user.voted_against?(@photo)%>
+      <p>You disliked this photo</p>
+      <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
+    <% else %>
+      <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
+      <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>   
+    <% end %>
+      
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a><p>
+    <b>Flag:</b>
+    <%= @photo.flag %>
+  </p>
+
+  <p>
+    <b>Question:</b>
+    <%= @photo.question %>
+  </p>
+
+  <p>
+    <b>Album:</b>
+    <%= @photo.album_id %>
+  </p>
+
+
+
+  <%= link_to 'Edit', edit_photo_path(@photo) %> |
+  <%= link_to 'Back', photos_path %>
+
+</div>
 
 
 <h3>Answers: </h3>
