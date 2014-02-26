@@ -7,3 +7,12 @@
 .answer li {
     list-style-type: none;
 }
+
+.photo_wrap {
+  width: 960px;
+}
+
+#show_image {
+  margin: 2px solid black;
+  width: 100%;
+}

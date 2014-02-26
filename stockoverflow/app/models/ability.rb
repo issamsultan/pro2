@@ -2,14 +2,14 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new
+    user ||= User.new 
 
     if user.role?(:admin)
-        can :manage, :all
+      can :manage, :all
     elsif user.role?(:registered) 
-        can :create, Photo
-        can :read, :all
-        can :edit, :photos, Photo do |photo|
+      can :create, Photo
+      can :read, :all
+      can :edit, Photo do |photo|
         photo.try(:user_id) == user.id 
       end
     else 
