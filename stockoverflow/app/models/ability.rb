@@ -10,6 +10,7 @@ class Ability
       can :read, :all
 
       can :create, Photo
+      can :vote_up, Photo
       can :edit, Photo do |photo|
         photo.try(:user_id) == user.id 
       end
