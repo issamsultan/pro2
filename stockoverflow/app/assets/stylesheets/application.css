@@ -14,81 +14,39 @@
 
 body {
   width: 100%;
-  background: url("http://i.imgur.com/YDBa5SZ.png");
+/*  background: url("http://i.imgur.com/YDBa5SZ.png");
+  background: url("http://i.imgur.com/0MmGlOo.png");
+  background: url("http://i.imgur.com/Kp9JBnc.png");
+  background: url("http://i.imgur.com/5euw6iJ.png");*/
+  background: url("http://i.imgur.com/SEGPv9I.png");
   margin: 0;
   padding: 0;
 }
 
-header {
+#header {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   height: 50px;
-  position: absolute;
-  top: 0;
-  left: 0;
+  border-bottom: 1px white solid;
+  margin-bottom: 20px;
 }
 
-header a {
-  display:inline-block;
-  float:right;
-}
-
-.button {
-  width: 100px;
-  height: 90%;
-  background: rgba(0, 0, 0, 0.2);
-  color: white;
-  height: 40px;
+.item .tag_cloud_div {
   font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.poptag {
-  float:left;
-  width: 10%;
-  height: 90%;
-  background: rgba(0, 0, 0, 0.2);
+  width: 400px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, .2);
   color: white;
-  height: 40px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.poptagcloud {
-  float:left;
-  width: 30%;
-  height: 90%;
-  background: rgba(0, 0, 0, 0.2);
+  font-weight: 300;
+  max-width: 300px;
+  height: 290px;
   color: white;
-  height: 40px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  display: table-cell;
-  text-align: left;
-  vertical-align: middle;
-  border-bottom-right-radius: 3px;
-  display: inline-block;
+  border-radius: 3px;
+  padding-top: 10px;
 }
 
-#upbut {
-  border-bottom-left-radius: 3px;
-}
-
-#page-wrap {
-  font-family: helvetica, sans-serif;
-  width: 960px;
-  margin: 0 auto;
-}
+.item .tag_cloud_div .s { font-size: 1.3rem; font-weight: 300; color: rgba(255, 255, 255, 0.3);}
+.item .tag_cloud_div .m { font-size: 1.6rem; font-weight: 300; color: rgba(255, 255, 255, 0.5);}
+.item .tag_cloud_div .l { font-size: 2rem; font-weight: 300; color: rgba(255, 255, 255, 1);}
 
 h1 {
   font-family: 'Lato', sans-serif;
@@ -97,20 +55,53 @@ h1 {
   text-align: center;
 }
 
-.bold {
-  font-weight: 700; 
+#links {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-#title {
-  width: 100%;
-  height: 50px;
-  margin-top: 80px;
+#links a {
+  display:inline-block;
+  float:right;
+}
+
+.button {
+  width: 100px;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#upbut {
+  border-bottom-left-radius: 3px;
+}
+
+#page-wrap {
+  margin-top: 100px;
+  font-family: helvetica, sans-serif;
+  width: 960px;
+  margin: 0 auto;
+}
+
+.bold {
+  font-weight: 700; 
 }
 
 #container {
   width: 97%;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.5);
+  -moz-box-shadow:    inset 0 0 20px #333333;
+  -webkit-box-shadow: inset 0 0 20px #333333;
+  box-shadow:         inset 0 0 20px #333333;
+/*  background: url("http://i.imgur.com/pCpz7SJ.png");*/
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -225,26 +216,9 @@ a, a:active, a:hover, a:visited a:link {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   font-family: 'Lato', sans-serif;
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-weight: 400;
   border: none;
   border-bottom: solid 2px gray;
   line-height: 2em;
-}
-
-#tag_cloud {
-  width: 100%;
-  line-height: 1.6em;
-  color: white;
-}
-
-.s { font-size: 1.0rem; }
-.m { font-size: 1.1rem; }
-.l { font-size: 1.2rem; }
-
-#tag_cloud a {
-  float: left;
-  margin-right: 5px;
-  color: white;
-  font-weight: 300;
 }
