@@ -21,10 +21,17 @@
       </div>
 
       <div id="links">
-        <a href="#"><div class="button">Signup</div></a>
-        <a href="#"><div class="button">Login</div></a>
-        <a href="albums#index"><div class="button">Albums</div></a>
-        <a href="photos/new"><div class="button" id="upbut">Upload</div></a> 
+        <% if current_user %>
+          <p class="button">Hello <%= current_user.email %></p>
+          <p class="button"><%= link_to 'logout', destroy_user_session_path, method: :delete  %></p>
+        <% else %>
+          <p class="button"><%= link_to 'login', user_session_path %></p>
+          <p class="button"><%= link_to 'Sign Up', new_user_registration_path, method: :get %></p>
+        <% end %>
+          <a href="albums#index"><div class="button">Albums</div></a>
+        <% if can? :create, @photo %>
+          <a href="photos/new"><div class="button" id="upbut">Upload</div></a>
+        <% end %>
       </div>
     
     </div>
