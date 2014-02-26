@@ -11,6 +11,8 @@ class Ability
 
       can :create, Photo
       can :vote_up, Photo
+      can :vote_down, Photo
+      can :remove_vote, Photo
       can :edit, Photo do |photo|
         photo.try(:user_id) == user.id 
       end
@@ -19,6 +21,9 @@ class Ability
       end
 
       can :create, Answer
+      can :vote_up, Answer
+      can :vote_down, Answer
+      can :remove_vote, Answer
       can :edit, Answer do |answer|
         answer.try(:user_id) == user.id 
       end
