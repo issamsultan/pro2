@@ -1,3 +1,105 @@
 // Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show_wrap {
+  border: solid 2px black;
+  width: 960px;
+}
+
+#main_photo {
+  width: 100%;
+}
+
+.show_wrap h2 {
+  font-family: 'Hammersmith One', sans-serif;
+}
+
+#title_container {
+  width: 100%;
+  background: blue;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#question {
+  // border: solid 2px black;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 30px;
+  // height: 100px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+#description {
+  width: 70%;
+  border:2px solid;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px #888888;
+  display: inline;
+  float: left;
+  background: lightgrey;
+}
+
+
+#tags_box {
+  // border: solid 2px black;
+  width: 15%;  
+  display: inline;
+  float: left;
+  width: 14%;
+  margin: 7px;
+}
+
+#votes {
+  // border: solid 2px black;
+  display: inline;
+  float: left;  
+  width: 14%;
+}
+
+#album_show {
+  // border: solid 2px black;
+  width: 14%;
+  margin-bottom: 3px;
+}
+
+#tweet {
+  // border: solid 2px black;
+  display: inline;
+  float: left; 
+  padding-left: 32px;
+}
+
+#edit_show {
+  // border: solid 2px black;
+  display: inline;
+  float: left;  
+  width: 10%; 
+  margin-left: 5%;
+  margin-right: 5px;
+  border:2px solid;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px #888888;
+  background: lightgrey;
+}
+
+#back_show {
+  // border: solid 2px black;
+  display: inline;
+  float: left;  
+  width: 10%;
+  margin-right: 15%;
+  border:2px solid;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px #888888;
+  background: lightgrey;
+
+}
+
+
+
+
+
