@@ -32,10 +32,8 @@ $(document).ready(function() {
  
     $container.isotope({
       itemSelector: '.item',
-      layoutMode : 'fitRows',
+      layoutMode : 'masonry',
       masonry: {
-        columnWidth: 200,
-        gutterWidth: 20
         }
     });
    
