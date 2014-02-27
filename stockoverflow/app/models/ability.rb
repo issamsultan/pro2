@@ -19,6 +19,9 @@ class Ability
       can :destroy, Photo do |photo|
         photo.try(:user_id) == user.id 
       end
+      can :update, Photo do |photo|
+        photo.try(:user_id) == user.id 
+      end
 
       can :create, Answer
       can :vote_up, Answer

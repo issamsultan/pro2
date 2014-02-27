@@ -1,27 +1,16 @@
 
-<div class='photo_wrap'>
-  <div id='show_image'>
-    <%= image_tag @photo.image.detail.url %>
-  </div>
-  
+<div class='show_wrap'>
+  <div id='main_photo_container'>
+  <div id='title_container'><h2><%= @photo.title %></h2></div>
+  <div id='main_image'><%= image_tag @photo.image.detail.url, :id => 'main_photo' %></div>
+</div>
 
-  <p>
-    <b><%= @photo.title %><b>
-  </p>
-
-  <p>
-    <b>Description:</b>
-    <%= @photo.description %>
-  </p>
-
-  <p>
-    <b>Tags:</b>
-    <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-  </p>
-
-
-  <p>
-    <b>Votes: <%= @photo.plusminus %></br>
+  <p id='question'>Q: <%= @photo.question %></p>
+    
+  <div id='votes'>
+    <div id='plusminus'>
+      <h3>Votes: <%= @photo.plusminus %></h3>
+    </div>
     <% if current_user.voted_for?(@photo) %>
       <p>You liked this photo</p>
       <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
@@ -32,74 +21,86 @@
       <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
       <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>   
     <% end %>
-      
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a><p>
-    <b>Flag:</b>
-    <%= @photo.flag %>
-  </p>
+  </div>
 
-  <p>
-    <b>Question:</b>
-    <%= @photo.question %>
-  </p>
+  <div id='description'>
+    <h3>Description:</h3>
+      <p><%= @photo.description %></p>
+  </div>
 
-  <p>
-    <b>Album:</b>
-    <%= @photo.album_id %>
-  </p>
+  <div id='tags_box'>
+    <h3>Tags:</h3>
+      <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  </div>
+
+  <div id='album_show'>
+    <h3>Album:</h3>
+      <%= @photo.album_id %>
+  </div>
+  
+  <div id= 'tweet'>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a>
+   </div>
+    <p>
+    
+  
+  <div id='edit_show'>
+    <% if can? :edit, @photo %>
+      <h3><%= link_to 'Edit', edit_photo_path(@photo) %></h3>
+    <% end %>
+  </div>
+  
+  <div id='back_show'>
+    <h3><%= link_to 'Back', photos_path %></h3>
+  </div>
+  
 
 
-  <% if can? :edit, @photo %>
-    <%= link_to 'Edit', edit_photo_path(@photo) %> 
+
+  <h3>Answers: </h3>
+  <% @answers.each do |answer| %>
+    <div class='answer'>
+      <ul>
+        <li>A: <%= answer.content %></li>
+        <li>User: <%= answer.user.email %></li>
+        <% if can? :edit, answer %>
+          <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
+        <% end %>
+        <% if can? :destroy, answer %>       
+          <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
+        <% end %>
+      </ul>
+      <p>Score: <%= answer.plusminus %></span></p>
+      </br>
+
+      <% if current_user.voted_for?(answer) %>  
+        <p>You voted for this answer</p>
+        <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+      <% elsif current_user.voted_against?(answer) %>
+        <p>You voted down this answer</p>
+        <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+      <% else %> 
+        <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
+        <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
+      <% end %>
+    </div>  
   <% end %>
 
-  <%= link_to 'Back', photos_path %>
-  
+    <h3>Provide an answer:<h3>
+
+  <% if current_user %>
+  <%= form_for @answer do |f| %>
+    <%= f.hidden_field :photo_id %>
+
+    <%= f.hidden_field :user_id %> 
+
+    <%= f.text_field :content %>
+    <br>
+    <%= f.submit "Submit" %>
+  <% end %>
+  <% end %>
+
 </div>
-
-
-<h3>Answers: </h3>
-<% @answers.each do |answer| %>
-  <div class='answer'>
-    <ul>
-      <li>A: <%= answer.content %></li>
-      <li>User: <%= answer.user.email %></li>
-      <% if can? :edit, answer %>
-        <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
-      <% end %>
-      <% if can? :destroy, answer %>       
-        <li><%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?' } %></li>     
-      <% end %>
-    </ul>
-    <p>Score: <%= answer.plusminus %></span></p>
-    </br>
-
-    <% if current_user.voted_for?(answer) %>  
-      <p>You voted for this answer</p>
-      <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
-    <% elsif current_user.voted_against?(answer) %>
-      <p>You voted down this answer</p>
-      <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
-    <% else %> 
-      <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
-      <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
-    <% end %>
-  </div>  
-<% end %>
-
-  <h3>Provide an answer:<h3>
-
-<% if current_user %>
-<%= form_for @answer do |f| %>
-  <%= f.hidden_field :photo_id %>
-
-  <%= f.hidden_field :user_id %> 
-
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit "Submit" %>
-<% end %>
-<% end %>
 
 
 
