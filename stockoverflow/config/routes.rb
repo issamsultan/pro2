@@ -2,7 +2,7 @@ Stockoverflow::Application.routes.draw do
 
   get 'tags/:tag', to: 'photos#index', as: :tag
 
-
+  get 'profile' => 'users#show', as: :profile
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
