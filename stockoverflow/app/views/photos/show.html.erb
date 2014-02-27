@@ -19,10 +19,10 @@
       <% if current_user %>
           <% if current_user.voted_for?(@photo) %>
             <p>You liked this photo</p>
-            <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
+            <%= button_to('Remove my vote', remove_vote_photo_path(@photo), :method => :post) %>
           <% elsif current_user.voted_against?(@photo)%>
             <p>You disliked this photo</p>
-            <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
+            <%= button_to('Remove my dislike', remove_vote_photo_path(@photo), :method => :post) %>
           <% else %>
             <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
             <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>   
@@ -48,7 +48,7 @@
 
     <div id='album_show'>
       <h3>Album:</h3>
-        <%= @photo.album_id %>
+        <%= @photo.album.title %>
     </div>    
            
     <div id='back_show'>
@@ -69,7 +69,7 @@
   <% @answers.each do |answer| %>
     <div class='answer'>
       <ul>
-        <li><p>A: <%= answer.content %></p></li>
+        <li><p><b>A:</b> <%= answer.content %></p></li>
         <li>Answered By: <%= answer.user.name %></li>
         <% if can? :edit, answer %>
           <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
@@ -84,10 +84,10 @@
       <% if current_user %>
         <% if current_user.voted_for?(answer) %>  
           <p>You voted for this answer</p>
-          <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+          <%= button_to('Remove my vote', remove_vote_answer_path(answer), :method => :post) %><br>
         <% elsif current_user.voted_against?(answer) %>
           <p>You voted down this answer</p>
-          <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+          <%= button_to('Remove my dislike', remove_vote_answer_path(answer), :method => :post) %><br>
         <% else %> 
           <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
           <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
