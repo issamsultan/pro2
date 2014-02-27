@@ -1,0 +1,21 @@
+.page-wrap
+  #userprofile
+    %h1 
+      User Profile
+    .overview
+      .userimage
+        = image_tag current_user.image
+      .userdetails
+        %h2
+          = current_user.name
+        %h3
+          = current_user.email
+        %h3
+          Joined:
+          = current_user.created_at
+        %h2
+          = current_user.email
+        %h2
+          = current_user.email
+        %h2
+          = current_user.email

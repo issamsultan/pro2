@@ -20,8 +20,10 @@ $(document).ready(function() {
   // $('#pagination').jscroll();
   $('#pagination').addClass('.none');
   
-  $("button").click(function(){
-  $("#infoban").toggle();
+  $(window).scroll(function(){
+    if($(window).scrollTop() === 10){
+      $('#infoban').slideUp(500);
+    }
   });
 
   // $.each($('.item'), function (index, obj) {
