@@ -1,7 +1,15 @@
-%input{:type=>"search", :name=>"ajaxsearch", :placeholder=>"Enter your search here" }
+= form_tag photos_path, method: :get, id: :search_form do
+  %p
+    = text_field_tag :search, params[:search], placeholder: "Please enter your search here.", autocomplete: false
+    = submit_tag "Search", id: :search_submit
 
 #container
-  = render 'index' 
+  .item
+    .tag_cloud_div
+      - tag_cloud Photo.tag_counts, %w[s m l] do |tag, css_class|
+        = link_to "#{tag.name}", tag_path(tag.name), class: css_class
+  
+  = render 'index'
 
 #pagination
   = will_paginate @photos

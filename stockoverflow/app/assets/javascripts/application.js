@@ -64,4 +64,13 @@ $(document).ready(function() {
     //   }
     // });
   });
+  
+  $(function () {
+    // $('#search_submit').addClass('hidden');
+
+    $('#search').on("submit", function() {
+      $('#search_form').submit();
+    });
+  });
+
 });

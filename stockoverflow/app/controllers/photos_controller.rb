@@ -3,10 +3,11 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    # @photos = Photo.all
 
-      if params[:tag]
-        @photos = Photo.tagged_with(params[:tag])
+      if params[:search]
+        @photos = Photo.where('title ILIKE ? OR description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
+      elsif params[:tag]
+        @photos = Photo.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
       else
         @photos = Photo.paginate(:page => params[:page], :per_page => 10)
       end

@@ -1,0 +1,31 @@
+$('#container').html("<%= escape_javascript(render(@photos)) %>");
+
+  var $container = $('#container');
+
+$container.imagesLoaded(function() {
+ 
+    $container.isotope({
+      itemSelector: '.item',
+      layoutMode : 'masonry',
+      masonry: {
+        }
+    });
+   
+    $container.infinitescroll({
+        navSelector: '#pagination',
+        nextSelector: '#pagination .pagination .next_page',
+        itemSelector: '.item',    
+        pixelsFromNavToBottom: -Math.round($(window).height() * 0.9),
+        bufferPx: Math.round($(window).height() * 0.9),
+        loading      : {
+          msgText  : $container.attr("data-loading-message"),
+          finishedMsg: $container.attr("data-no-more-translators")
+        }
+      },
+      function(newElements) {
+        $container.isotope('appended', $(newElements));
+      }
+    );
+  });
+
+addEventListeners();
