@@ -29,12 +29,16 @@
           <div class="button"><%= link_to 'Login', user_session_path %></div>
           <div class="button"><%= link_to 'Sign Up', new_user_registration_path, method: :get %></div>
         <% end %>
-          <a href="albums#index"><div class="button">Albums</div></a>
+          <!-- <div class="button"><%= link_to 'Albums', albums_path, method: :get %></div> -->
         <% if current_user %>
-          <a href="photos/new"><div class="button" id="upbut">Upload</div></a>
+          <div class="button"><%= link_to 'Upload', new_photo_path, method: :get %></div>
         <% end %>
       </div>
-        <p class="button" id="hello">Hello <%= current_user.email if current_user %></p>
+        <% if current_user %>
+          <p class="button" id="hello">Hello <%= current_user.name if current_user %></p>
+        <% else %>
+          <p class="button" id="hello">Some info</p>
+        <% end %>
     </div>
   </header>
 
