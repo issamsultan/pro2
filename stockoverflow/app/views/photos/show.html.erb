@@ -4,9 +4,11 @@
   <div id='main_image'><%= image_tag @photo.image.detail.url, :id => 'main_photo' %>
   </div>
 
-
-  <p id='question'>Q: <%= @photo.question %></p>
-  <p id='user_uploaded'>Uploaded by: <%= @photo.user.name %> </p>
+  <div id='question'>
+    <p>Q: <%= @photo.question %></p>
+  </div>
+    
+  <p id='user_uploaded'>Asked By: <%= @photo.user.name %> </p>
   
     
   <div id='vote_description_wrapper'>
@@ -33,44 +35,42 @@
     </div>
   </div>
 
-  <div id= 'tweet'>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a>
-   </div>
+  <div id='lower_mid_wrapper'>
 
-  <div id='tags_box'>
-    <h3>Tags:</h3>
-      <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-  </div>
+    <div id= 'tweet'>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a>
+     </div>
 
-  <div id='album_show'>
-    <h3>Album:</h3>
-      <%= @photo.album_id %>
-  </div>
-  
-  
-    <p>
-    
-  <div id='show_nav'>
-    <div id='edit_show'>
-      <% if can? :edit, @photo %>
-        <h3><%= link_to 'Edit', edit_photo_path(@photo) %></h3>
-      <% end %>
+    <div id='tags_box'>
+      <h3>Tags:</h3>
+        <%= raw @photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
     </div>
-    
-    
+
+    <div id='album_show'>
+      <h3>Album:</h3>
+        <%= @photo.album_id %>
+    </div>    
+           
     <div id='back_show'>
       <h3><%= link_to 'Back', photos_path %></h3>
     </div>
+
+    <div id='edit_show'>
+        <% if can? :edit, @photo %>
+          <h3><%= link_to 'Edit', edit_photo_path(@photo) %></h3>
+        <% end %>
+    </div>
+
   </div>
 
 
 
-  <h3>Answers: </h3>
+  <h2>Answers: </h2>
   <% @answers.each do |answer| %>
     <div class='answer'>
       <ul>
         <li>A: <%= answer.content %></li>
-        <li>User: <%= answer.user.email %></li>
+        <li>Answered By: <%= answer.user.name %></li>
         <% if can? :edit, answer %>
           <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
         <% end %>
