@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :album_id, :description, :flag, :image, :question, :rating, :title, :answer_ids, :remote_image_url, :tag_list, :user_id
+  attr_accessible :album_id, :description, :flag, :image, :question, :rating, :title, :answer_ids, :remote_image_url, :tag_list, :user_id, :image_cache
 
   mount_uploader :image, ImageUploader
 
