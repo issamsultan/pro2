@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .show_wrap {
-  border: solid 2px black;
+  // border: solid 2px black;
   width: 960px;
 }
 
@@ -45,7 +45,7 @@
 
 
 #tags_box {
-  border: solid 2px black;  
+  // border: solid 2px black;  
   display: inline;
   float: left;
   width: 20%;
@@ -55,7 +55,7 @@
 
 
 #album_show {
-  border: solid 2px black;
+  // border: solid 2px black;
   width: 30%%;
   margin-bottom: 3px;
   display: inline;
@@ -63,11 +63,11 @@
 }
 
 #tweet {
-  border: solid 2px black;
+  // border: solid 2px black;
   display: inline;
   float: left; 
-  // padding-left: 32px;
   width: 15%;
+  padding: 20px;
 }
 
 // #show_nav {
@@ -77,18 +77,19 @@
 // }
 
 #edit_show {
-  border: solid 2px black;  
+  // border: solid 2px black;  
   width: 15%;
   display: inline;
   float: left;  
 }
 
 #back_show {
-  border: solid 2px black;
+  // border: solid 2px black;
   width: 15%;
   display: inline;
   float: left;  
 }
+
 
 .answer {
   // border: solid 2px black;
@@ -100,12 +101,19 @@
 
 }
 
-.answer li {
-    list-style-type: none;
-}
+
 
 .answer li {
-    font-size: 14px;
+    font-size: 16px;
+    list-style-type: none;
+    line-height: 29px;
+}
+
+.answer li p {
+    font-size: 18px;
+    list-style-type: none;
+    line-height: 20px;
+    // font-weight: bold;
 }
 
 #vote_description_wrapper {
@@ -142,7 +150,8 @@
 
 #lower_mid_wrapper {
   width: 100%;
-  border:2px solid blue;
+  // border:2px solid blue;
   height: 200px;
+  margin-top: 16px;
 }
 

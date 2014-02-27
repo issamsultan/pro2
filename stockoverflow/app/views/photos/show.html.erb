@@ -64,12 +64,12 @@
   </div>
 
 
-
-  <h2>Answers: </h2>
+  
+    <h2>Answers: </h2>
   <% @answers.each do |answer| %>
     <div class='answer'>
       <ul>
-        <li>A: <%= answer.content %></li>
+        <li><p>A: <%= answer.content %></p></li>
         <li>Answered By: <%= answer.user.name %></li>
         <% if can? :edit, answer %>
           <li><%= link_to 'Edit', edit_answer_path(answer) %></li>
