@@ -17,10 +17,13 @@
 
 #title_container {
   width: 100%;
-  background: blue;
+  background: black;
   position: relative;
   top: 0;
   left: 0;
+  height: 46px;
+  color: white;
+  padding: 1px;
 }
 
 #question {
@@ -33,36 +36,24 @@
   margin-bottom: 10px;
 }
 
-#description {
-  width: 70%;
-  border:2px solid;
-  border-radius: 5px;
-  box-shadow: 10px 10px 5px #888888;
-  display: inline;
-  float: left;
-  background: lightgrey;
-}
+
 
 
 #tags_box {
   // border: solid 2px black;
-  width: 15%;  
+  width: 100%;  
   display: inline;
   float: left;
-  width: 14%;
-  margin: 7px;
+  width: 100%;
+  margin: 0 auto;
+  
 }
 
-#votes {
-  // border: solid 2px black;
-  display: inline;
-  float: left;  
-  width: 14%;
-}
+
 
 #album_show {
   // border: solid 2px black;
-  width: 14%;
+  width: 100%;
   margin-bottom: 3px;
 }
 
@@ -71,35 +62,75 @@
   display: inline;
   float: left; 
   padding-left: 32px;
+  width: 100%;
+}
+
+#show_nav {
+  // border: solid 2px blue; 
+  width: 100%;
+  height: 50px;
 }
 
 #edit_show {
-  // border: solid 2px black;
+  // border: solid 2px black;  
+  width: 15%;
   display: inline;
   float: left;  
-  width: 10%; 
-  margin-left: 5%;
-  margin-right: 5px;
-  border:2px solid;
-  border-radius: 5px;
-  box-shadow: 10px 10px 5px #888888;
-  background: lightgrey;
+  height: 100%;
+  margin-left: 35%;
 }
 
 #back_show {
   // border: solid 2px black;
+  width: 15%;
   display: inline;
   float: left;  
-  width: 10%;
-  margin-right: 15%;
-  border:2px solid;
-  border-radius: 5px;
-  box-shadow: 10px 10px 5px #888888;
-  background: lightgrey;
+  height: 100%;
+}
+
+.answer {
+  border: solid 2px black;
+  padding: 5px; 
+  margin: 0 auto; 
+  margin-top: 25px;
+  width: 70%;
+  background-image:url('brushed.png');
 
 }
 
+.answer li {
+    list-style-type: none;
+}
 
+#vote_description_wrapper {
+  width: 100%;
+  background-image:url('brushed.png');
+  height: 200px;
+}
+
+#votes {
+  // border: solid 2px black;
+  display: inline;
+  float: left;  
+  width: 15%;
+  height: 100%;
+  padding-top: 30px;
+
+}
+
+#description {
+  width: 85%;
+  // border:2px solid;
+  border-radius: 5px;
+  display: inline;
+  float: left;
+  background-image:url('brushed.png');
+  height: 100%;
+}
+
+#description p {
+  padding: 4px;
+}
 
 
 
