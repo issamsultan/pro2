@@ -1,21 +1,27 @@
 .page-wrap
   #userprofile
-    %h1 
+    %h2 
       User Profile
     .overview
       .userimage
         = image_tag current_user.image
       .userdetails
-        %h2
+        %h1
           = current_user.name
         %h3
           = current_user.email
         %h3
+          %br
+          %br
+          %br
+          %br
+          %br
           Joined:
-          = current_user.created_at
-        %h2
-          = current_user.email
-        %h2
-          = current_user.email
-        %h2
-          = current_user.email
+          = current_user.created_at.strftime("%d/%m/%Y %H:%M")
+        %h3
+          Last Login:
+          = current_user.last_sign_in_at.strftime("%d/%m/%Y %H:%M")
+
+    .overview
+      %h2
+        / = current_user.photos.image.first

@@ -5,11 +5,11 @@ class PhotosController < ApplicationController
   def index
 
       if params[:search]
-        @photos = Photo.where('title ILIKE ? OR description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
+        @photos = Photo.plusminus_tally.where('title ILIKE ? OR description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
       elsif params[:tag]
-        @photos = Photo.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
+        @photos = Photo.plusminus_tally.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
       else
-        @photos = Photo.paginate(:page => params[:page], :per_page => 10)
+        @photos = Photo.plusminus_tally.paginate(:page => params[:page], :per_page => 10)
       end
 
     respond_to do |format|

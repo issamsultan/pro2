@@ -21,8 +21,14 @@ $(document).ready(function() {
   $('#pagination').addClass('.none');
   
   $(window).scroll(function(){
-    if($(window).scrollTop() === 10){
-      $('#infoban').slideUp(500);
+    if($(window).scrollTop() > 10){
+      $('#infoban').slideUp(750);
+    }
+  });
+
+  $(window).scroll(function(){
+    if($(window).scrollTop() <= 10){
+      $('#infoban').slideDown(750);
     }
   });
 
