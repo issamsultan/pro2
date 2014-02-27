@@ -22,20 +22,35 @@
 
       <div id="links">
         <% if current_user %>
-          <p class="button">Hello <%= current_user.email %></p>
-          <p class="button"><%= link_to 'logout', destroy_user_session_path, method: :delete  %></p>
+          <div class="button"><%= link_to 'Logout', destroy_user_session_path, method: :delete  %></div>
         <% else %>
-          <p class="button"><%= link_to 'login', user_session_path %></p>
-          <p class="button"><%= link_to 'Sign Up', new_user_registration_path, method: :get %></p>
+          <div class="button"><%= link_to 'Login', user_session_path %></div>
+          <div class="button"><%= link_to 'Sign Up', new_user_registration_path, method: :get %></div>
         <% end %>
           <a href="albums#index"><div class="button">Albums</div></a>
-        <% if can? :create, @photo %>
+        <% if current_user %>
           <a href="photos/new"><div class="button" id="upbut">Upload</div></a>
         <% end %>
       </div>
-    
+        <p class="button" id="hello">Hello <%= current_user.email if current_user %></p>
     </div>
   </header>
+
+  <div id="infoban">
+    <% if current_user %>
+      <div id="notif">
+      </div>
+    <% else %>
+      <div id="welcome">
+        <div id="what"><p>StockOverflow is a question and answer site for professional and enthusiast photographers. It's 100% free, no registration required.</p></div>
+        <div id="expcont">
+          <div class="exp"></div>
+          <div class="exp"></div>
+          <div class="exp"></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
   <div id="page-wrap">
 
