@@ -36,8 +36,6 @@
       </div>
         <% if current_user %>
           <p class="button" id="hello">You are logged in as <%= current_user.name if current_user %></p>
-        <% else %>
-          <p class="button" id="hello">Some info</p>
         <% end %>
     </div>
   </header>
@@ -60,7 +58,7 @@
   </div>
   <% end %>
 
-  <div id="page-wrap">
+  <div class="page-wrap">
 
     <div id="centre">
       <%= yield %>
