@@ -1,32 +1,41 @@
 
 <div class='show_wrap'>
-  <div id='main_photo_container'>
   <div id='title_container'><h2><%= @photo.title %></h2></div>
-  <div id='main_image'><%= image_tag @photo.image.detail.url, :id => 'main_photo' %></div>
-</div>
+  <div id='main_image'><%= image_tag @photo.image.detail.url, :id => 'main_photo' %>
+  </div>
+
 
   <p id='question'>Q: <%= @photo.question %></p>
+  <p id='user_uploaded'>Uploaded by: <%= @photo.user.name %> </p>
+  
     
-  <div id='votes'>
-    <div id='plusminus'>
-      <h3>Votes: <%= @photo.plusminus %></h3>
+  <div id='vote_description_wrapper'>
+    <div id='votes'>
+      <div id='plusminus'>
+        <h3>Votes: <%= @photo.plusminus %></h3>
+      </div>
+      <% if current_user %>
+          <% if current_user.voted_for?(@photo) %>
+            <p>You liked this photo</p>
+            <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
+          <% elsif current_user.voted_against?(@photo)%>
+            <p>You disliked this photo</p>
+            <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
+          <% else %>
+            <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
+            <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>   
+          <% end %>
+      <% end %>
     </div>
-    <% if current_user.voted_for?(@photo) %>
-      <p>You liked this photo</p>
-      <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
-    <% elsif current_user.voted_against?(@photo)%>
-      <p>You disliked this photo</p>
-      <%= button_to('Remove my vote or dislike', remove_vote_photo_path(@photo), :method => :post) %>
-    <% else %>
-      <%= link_to(image_tag("up24.png"), vote_up_photo_path(@photo), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
-      <%= link_to(image_tag("down32.png"), vote_down_photo_path(@photo), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %><br>   
-    <% end %>
+
+    <div id='description'>
+        <p><%= @photo.description %></p>
+    </div>
   </div>
 
-  <div id='description'>
-    <h3>Description:</h3>
-      <p><%= @photo.description %></p>
-  </div>
+  <div id= 'tweet'>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a>
+   </div>
 
   <div id='tags_box'>
     <h3>Tags:</h3>
@@ -38,22 +47,21 @@
       <%= @photo.album_id %>
   </div>
   
-  <div id= 'tweet'>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="stock_overflow_twitter_account" data-lang="en">Tweet</a>
-   </div>
+  
     <p>
     
-  
-  <div id='edit_show'>
-    <% if can? :edit, @photo %>
-      <h3><%= link_to 'Edit', edit_photo_path(@photo) %></h3>
-    <% end %>
+  <div id='show_nav'>
+    <div id='edit_show'>
+      <% if can? :edit, @photo %>
+        <h3><%= link_to 'Edit', edit_photo_path(@photo) %></h3>
+      <% end %>
+    </div>
+    
+    
+    <div id='back_show'>
+      <h3><%= link_to 'Back', photos_path %></h3>
+    </div>
   </div>
-  
-  <div id='back_show'>
-    <h3><%= link_to 'Back', photos_path %></h3>
-  </div>
-  
 
 
 
@@ -73,15 +81,17 @@
       <p>Score: <%= answer.plusminus %></span></p>
       </br>
 
-      <% if current_user.voted_for?(answer) %>  
-        <p>You voted for this answer</p>
-        <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
-      <% elsif current_user.voted_against?(answer) %>
-        <p>You voted down this answer</p>
-        <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
-      <% else %> 
-        <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
-        <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
+      <% if current_user %>
+        <% if current_user.voted_for?(answer) %>  
+          <p>You voted for this answer</p>
+          <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+        <% elsif current_user.voted_against?(answer) %>
+          <p>You voted down this answer</p>
+          <%= button_to('Remove my vote or dislike', remove_vote_answer_path(answer), :method => :post) %><br>
+        <% else %> 
+          <%= link_to(image_tag("up24.png"), vote_up_answer_path(answer), :alt => "Up Arrow", :id => "up_arrow", :method => :post) %><br>
+          <%= link_to(image_tag("down32.png"), vote_down_answer_path(answer), :alt => "Down Arrow", :id => "down_arrow", :method => :post) %>
+        <% end %>
       <% end %>
     </div>  
   <% end %>
