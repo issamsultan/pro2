@@ -30,6 +30,9 @@ class Ability
       can :edit, Answer do |answer|
         answer.try(:user_id) == user.id 
       end
+      can :update, Answer do |answer|
+        answer.try(:user_id) == user.id 
+      end
       can :destroy, Answer do |answer|
         answer.try(:user_id) == user.id 
       end
