@@ -19,6 +19,10 @@
 $(document).ready(function() {
   // $('#pagination').jscroll();
   $('#pagination').addClass('.none');
+  
+  $("button").click(function(){
+  $("#infoban").toggle();
+  });
 
   // $.each($('.item'), function (index, obj) {
   //   $(this).css({
