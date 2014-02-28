@@ -43,15 +43,11 @@
   -moz-box-shadow:    inset 0 0 8px #333333;
   -webkit-box-shadow: inset 0 0 8px #333333;
   box-shadow:         inset 0 0 8px #333333;
-
+  display: inline-block;
 }
 
 #question h3, #question h2 {
   padding: 20px 10px;
-}
-
-#question h2 {
-/*  margin-top: -20px;*/
 }
 
 #tags_box {
@@ -114,65 +110,70 @@
     list-style-type: none;
     line-height: 29px;
     font-family: 'Lato', sans-serif;
+    display: inline;
+    padding: 0 20px;
 }
 
 .answer li p {
-    font-size: 18px;
-    list-style-type: none;
-    line-height: 20px;
-    font-family: 'Lato', sans-serif;
-    padding-top: 10px;
-    // font-weight: bold;
+  font-size: 18px;
+  list-style-type: none;
+  line-height: 20px;
+  font-family: 'Lato', sans-serif;
+  padding-top: 10px;
+  // font-weight: bold;
 }
 
-#vote_description_wrapper {
+#mainans {
+  padding: 5px 15px;
   width: 100%;
-  background: url("http://i.imgur.com/xogjCKz.png");
-  height: 172px;
-  border-radius: 3px;
-  -moz-box-shadow:    inset 0 0 8px #333333;
-  -webkit-box-shadow: inset 0 0 8px #333333;
-  box-shadow:         inset 0 0 8px #333333;
-
 }
 
-#votes {
-  // border: solid 2px black;
-  display: inline;
-  float: left;  
-  width: 20%;
-  height: 100%;
+#mainans ul {
+  text-align: left;
+  padding: 0;
+  margin-left: -20px;
 }
+
+.votes {
+  display: relative;
+  float: right;
+  width: 18%;
+  text-align: center;
+}
+
+.votes h3 {
+  margin-bottom: -15px;
+}
+
 
 #mainq {
   width: 80%;
-  border: 2px solid black;
   border-radius: 3px;
   height: 50%; 
 }
 
 #description {
   width: 80%;
-  border: 2px solid black;
   border-radius: 3px;
   height: 50%;
-}
-
-#description p {
-  font-size: 14px;
-  text-align: left;
+  margin-top: 20px;
 }
 
 #description h3 {
   text-align: left;
+  margin: 0;
+}
+
+#description h3 {
+  margin-top: -20px;
 }
 
 #lower_mid_wrapper {
   width: 100%;
   height: 100px;
-  margin-top: 16px;
+  margin-top: -15px;
+  padding-bottom: 5px;
   background: url("http://i.imgur.com/xogjCKz.png");
-  border-radius: 3px;
   -moz-box-shadow:    inset 0 0 8px #333333;
   -webkit-box-shadow: inset 0 0 8px #333333;
   box-shadow:         inset 0 0 8px #333333;
@@ -180,7 +181,9 @@
 
 input {
   font-family: 'Lato', sans-serif;
-  font-size: 2em;
+  font-size: 1em;
+  width: 100%;
+  line-height: 2em; 
 }
 
 #poop {
