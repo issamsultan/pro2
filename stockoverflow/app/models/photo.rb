@@ -11,6 +11,7 @@ class Photo < ActiveRecord::Base
   validates :image, presence: true
   validates :title, presence: true, :length => { :minimum => 3, :maximum => 150 }
   validates :question, presence: true, :length => { :minimum => 3, :maximum => 250 }
+  validates :album, presence: true
   
 
 
