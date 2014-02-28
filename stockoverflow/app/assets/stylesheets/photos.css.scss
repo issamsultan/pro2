@@ -12,7 +12,7 @@
 }
 
 .show_wrap h2 {
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 #title_container {
@@ -24,6 +24,8 @@
   height: 46px;
   color: white;
   margin-top: 15px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 #title_container h2 {
@@ -31,22 +33,26 @@
 }
 
 #question {
-  // border: solid 2px black;
-  width: 70%;
-  margin: 0 auto;
-  
-  // height: 100px;
+  width: 100%;
+  margin: -25px auto;
+  text-align: left;  
   margin-bottom: 10px;
+  background: url("http://i.imgur.com/xogjCKz.png");
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-box-shadow:    inset 0 0 8px #333333;
+  -webkit-box-shadow: inset 0 0 8px #333333;
+  box-shadow:         inset 0 0 8px #333333;
+
 }
 
-#question p {
-  padding: 5px;
-  font-size: 30px;
-  line-height: 35px;
+#question h3, #question h2 {
+  padding: 20px 10px;
 }
 
-
-
+#question h2 {
+/*  margin-top: -20px;*/
+}
 
 #tags_box {
   // border: solid 2px black;  
@@ -55,8 +61,6 @@
   width: 20%;
   
 }
-
-
 
 #album_show {
   // border: solid 2px black;
@@ -105,8 +109,6 @@
 
 }
 
-
-
 .answer li {
     font-size: 16px;
     list-style-type: none;
@@ -126,7 +128,12 @@
 #vote_description_wrapper {
   width: 100%;
   background: url("http://i.imgur.com/xogjCKz.png");
-  height: 200px;
+  height: 172px;
+  border-radius: 3px;
+  -moz-box-shadow:    inset 0 0 8px #333333;
+  -webkit-box-shadow: inset 0 0 8px #333333;
+  box-shadow:         inset 0 0 8px #333333;
+
 }
 
 #votes {
@@ -134,30 +141,62 @@
   display: inline;
   float: left;  
   width: 20%;
-  height: 80%;
-  padding-top: 30px;
+  height: 100%;
+}
 
+#mainq {
+  width: 80%;
+  border: 2px solid black;
+  border-radius: 3px;
+  height: 50%; 
 }
 
 #description {
   width: 80%;
-  // border:2px solid;
-  border-radius: 5px;
-  display: inline;
-  float: left;
-  height: 100%;
+  border: 2px solid black;
+  border-radius: 3px;
+  height: 50%;
 }
 
 #description p {
-  padding: 30px;
   font-size: 14px;
+  text-align: left;
+}
+
+#description h3 {
   text-align: left;
 }
 
 #lower_mid_wrapper {
   width: 100%;
-  // border:2px solid blue;
-  height: 200px;
+  height: 100px;
   margin-top: 16px;
+  background: url("http://i.imgur.com/xogjCKz.png");
+  border-radius: 3px;
+  -moz-box-shadow:    inset 0 0 8px #333333;
+  -webkit-box-shadow: inset 0 0 8px #333333;
+  box-shadow:         inset 0 0 8px #333333;
 }
 
+input {
+  font-family: 'Lato', sans-serif;
+  font-size: 2em;
+}
+
+#poop {
+  position: relative;
+  bottom: 0;
+  background: rgba(0,0,0,0);
+  border: 0px;
+}
+
+.answer {
+  border-radius: 3px;
+  background: url("http://i.imgur.com/xogjCKz.png");
+  border-radius: 3px;
+  -moz-box-shadow:    inset 0 0 8px #333333;
+  -webkit-box-shadow: inset 0 0 8px #333333;
+  box-shadow:         inset 0 0 8px #333333;
+  text-align: left;
+  min-height: 100px;
+}

@@ -1,0 +1,16 @@
+/ = for current_user.photos each do |photo|
+
+/   .item
+/     .blurtop
+/       = image_tag photo.image 
+
+/     .question
+      
+/       %p 
+/         = truncate photo.question, length: 300
+
+/     = link_to image_tag(photo.image), photo
+    
+/     .photo_title
+/       %h2
+/         = link_to photo.title, photo
