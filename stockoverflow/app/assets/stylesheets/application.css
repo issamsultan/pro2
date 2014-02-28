@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+ ul, ol {
+  list-style: none;
+ }
+
 body {
   width: 100%;
 /*  background: url("http://i.imgur.com/YDBa5SZ.png");

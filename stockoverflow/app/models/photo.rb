@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
   has_many :answers
   belongs_to :user
 
-  validates :description, :length => { :maximum => 500 }
+  validates :description, presence: true, :length => {:minimum => 3, :maximum => 500 }
   validates :image, presence: true
   validates :title, presence: true, :length => { :minimum => 3, :maximum => 150 }
   validates :question, presence: true, :length => { :minimum => 3, :maximum => 250 }

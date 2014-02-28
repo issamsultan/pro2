@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   has_many :photos
 
+  validates :name, presence: true, :length => { :minimum => 2, :maximum => 100 }
+
 
 def role?(role)
   self.role.to_s == role.to_s

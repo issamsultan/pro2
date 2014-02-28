@@ -23,6 +23,8 @@ class Ability
         photo.try(:user_id) == user.id 
       end
 
+      can :read, Album
+
       can :create, Answer
       can :vote_up, Answer
       can :vote_down, Answer
@@ -45,6 +47,7 @@ class Ability
       end
 
     else 
+      can :read, Album
       can :read, Photo
       can :create, User
     end

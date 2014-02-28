@@ -1,4 +1,4 @@
-<h1>Listing albums</h1>
+<h1>Albums</h1>
 
 <table>
   <tr>
@@ -10,13 +10,17 @@
   </tr>
 
 <% @albums.each do |album| %>
-  <tr>
-    <td><%= album.title %></td>
-    <td><%= album.description %></td>
-    <td><%= link_to 'Show', album %></td>
-    <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div>
+    <h2><%= album.title %></h2>
+    <% if album.photos.first %>
+      <%= link_to image_tag(album.photos.first.image), album %>
+    <% else %>
+      <%= link_to "No Pictures in album", album %>
+    <%end %>
+    <p><%= album.description %></p>
+    <hr>
+  </div>
+
 <% end %>
 </table>
 

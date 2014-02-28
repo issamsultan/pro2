@@ -10,6 +10,16 @@
   <%= @album.description %>
 </p>
 
+<% @photos.each do |photo| %>
+  <ul>
+    <li><%= image_tag photo.title %></li>
+    <li><%= link_to image_tag(photo.image.url :medium), photo_path(photo)%></li>   
+    <li><%= image_tag photo.question %></li> 
+  </ul>
+<% end %>
+
+
+
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
