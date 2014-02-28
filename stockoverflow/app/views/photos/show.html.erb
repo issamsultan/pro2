@@ -101,24 +101,24 @@
   <% end %>
   </div>
 
-  <% if current_user %>
-    <h3>Provide an answer:</h3>
-    <%= form_for @answer do |f| %>
-      <%= f.hidden_field :photo_id %>
-
-      <%= f.hidden_field :user_id %> 
-
-      <%= f.text_field :content %>
-      <br>
-      <%= f.submit "Submit" %>
-    <% end %>
-  <% else %>
-    <h3>Please sign in to provide an answer.</h3>
-  <% end %>
-
 </div>
 
+  <% if current_user %>
+  <div id ="anz">
+    <h3>Provide an answer:</h3>
+      <%= form_for @answer do |f| %>
+        <%= f.hidden_field :photo_id %>
 
+        <%= f.hidden_field :user_id %> 
+
+        <%= f.text_field :content %>
+        <br>
+        <%= f.submit "Submit" %>
+      <% end %>
+      </div>
+    <% else %>
+      <h3>Please sign in to provide an answer.</h3>
+  <% end %>
 
 
 
